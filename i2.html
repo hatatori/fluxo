@@ -177,50 +177,60 @@ Valores éticos
 
 
 		}
-			u2 = document.createElement("ul")
-			u2.innerHTML = lista.join("")
+
+		u2 = document.createElement("ul")
+		u2.innerHTML = lista.join("")
 
 		function organiza(){
 
-			//joga pra cima
-			ql = u2.querySelectorAll("li")
-
 			for(x=0;x<10;x++){
-			for(i=u2.childElementCount-1;i>=0;i--){
-				try{
+				ql = u2.querySelectorAll("li")
+				for(i=u2.childElementCount;i>=0;i--){
+					try{
 
-					p1 = u2.children[i-1].getAttribute("p")
-					p2 = u2.children[i].getAttribute("p")
+						p1 = u2.children[i-1].getAttribute("p")
+						p2 = u2.children[i].getAttribute("p")
+
+						nome1 = u2.children[i-1].getAttribute("class")
+						nome2 = u2.children[i].getAttribute("class")
 
 
 
-					if(u2.children[i].className == "val"){
-						console.log(u2.children[i])
+						if(u2.children[i].className == "val" && p1 < p2){
 
-						u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
-					}
-				}catch(e){}
+							u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
+						}
+					}catch(e){}
+				}
 			}
-		}
 		}
 
 		
 
 		function organiza2(){
-			for(i=u2.childElementCount-1;i>=0;i--){
-				try{
-					p1 = u2.children[i-1].getAttribute("p")
-					p2 = u2.children[i].getAttribute("p")
+			for(x=0;x<10;x++){
+				for(i=u2.childElementCount;i>=0;i--){
+					try{
 
-					if(p2 > p1){
-						u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
-					}
-				}catch(e){}
+						p1 = u2.children[i-1].getAttribute("p")
+						p2 = u2.children[i].getAttribute("p")
+						
+						nome1 = u2.children[i-1].getAttribute("class")
+						nome2 = u2.children[i].getAttribute("class")
+
+						if(p2 > p1 || nome1 != nome2){
+							u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
+						}
+					}catch(e){}
+				}
 			}
 		}
 
-		for(j=0;j<10;j++){
+		for(vx=0;vx<10;vx++){
 			organiza()
+		}
+		
+		for(vx=0;vx<10;vx++){
 			organiza2()
 		}
 

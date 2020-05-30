@@ -15,35 +15,17 @@
 
 <!-- <link href="https://unpkg.com/treeflex/dist/css/treeflex.css" rel="stylesheet"> -->
 
-<textarea style="width: 450;height: 200" id="txt">1
-	2
-		3
-		4
-			5
-			6
-			7
-		8
-	9
-	10
-		11
-		12</textarea>
+<textarea style="width: 450;height: 200" id="txt">a
+	b
+	c
+		d
+	e</textarea>
 <br><br>
 <div class="tf-tree example" id="ok"></div>
 
 <script>
 
-	txt.onkeydown=function(e){
-		
-		if(e.key == "Tab"){
-			e.preventDefault()
-			this.value+="\t"
-			go()
-		}
-	}
 
-	txt.onkeyup=function(){
-		go()
-	}
 
 	
 	
@@ -54,6 +36,12 @@
 		linha = txt.value.split("\n")
 
 		ordem = txt.value.split("\n").map(e=>e.split(/\t/g).length-1)
+
+		ar = linha.map(e=>"<li>"+e.replace(/\t/g,"")+"</li>")
+
+		lista = []
+		s = 0
+
 
 		ar = linha.map(e=>"<li>"+e.replace(/\t/g,"")+"</li>")
 
@@ -77,62 +65,91 @@
 
 
 		}
-			u2 = document.createElement("ul")
-			u2.innerHTML = lista.join("")
+
+		u2 = document.createElement("ul")
+		u2.innerHTML = lista.join("")
 
 		function organiza(){
 
-			//joga pra cima
-			ql = u2.querySelectorAll("li")
-
 			for(x=0;x<10;x++){
-			for(i=u2.childElementCount-1;i>=0;i--){
-				try{
+				ql = u2.querySelectorAll("li")
+				for(i=u2.childElementCount;i>=0;i--){
+					try{
 
-					p1 = u2.children[i-1].getAttribute("p")
-					p2 = u2.children[i].getAttribute("p")
+						p1 = u2.children[i-1].getAttribute("p")
+						p2 = u2.children[i].getAttribute("p")
+
+						nome1 = u2.children[i-1].getAttribute("class")
+						nome2 = u2.children[i].getAttribute("class")
 
 
 
-					if(u2.children[i].className == "val"){
-						console.log(u2.children[i])
+						if(u2.children[i].className == "val" && p1 < p2){
 
-						u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
-					}
-				}catch(e){}
+							u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
+						}
+					}catch(e){}
+				}
 			}
-		}
 		}
 
 		
 
 		function organiza2(){
-			for(i=u2.childElementCount-1;i>=0;i--){
-				try{
-					p1 = u2.children[i-1].getAttribute("p")
-					p2 = u2.children[i].getAttribute("p")
+			for(x=0;x<10;x++){
+				for(i=u2.childElementCount;i>=0;i--){
+					try{
 
-					if(p2 > p1){
-						u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
-					}
-				}catch(e){}
+						p1 = u2.children[i-1].getAttribute("p")
+						p2 = u2.children[i].getAttribute("p")
+						
+						nome1 = u2.children[i-1].getAttribute("class")
+						nome2 = u2.children[i].getAttribute("class")
+
+						if(p2 > p1 || nome1 != nome2){
+							u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
+						}
+					}catch(e){}
+				}
 			}
 		}
 
-		for(j=0;j<10;j++){
+		for(vx=0;vx<10;vx++){
 			organiza()
+		}
+		
+		for(vx=0;vx<10;vx++){
 			organiza2()
 		}
 
 
 
-	ok.innerHTML = u2.outerHTML
+		ok.innerHTML = u2.outerHTML
 
-	console.log(u2.outerHTML)
-}
+		console.log(u2.outerHTML)
+	}
 
-go()
+	go()
 
+	txt.onkeydown=function(e){
+		
+		if(e.key == "Tab"){
+			e.preventDefault()
+			this.value+="\t"
+		}
+		for(vx=0;vx<10;vx++){
+			organiza()
+			organiza2()
+		}
+	}
+
+	txt.onkeyup=function(){
+		go()
+		for(vx=0;vx<10;vx++){
+			organiza()
+			organiza2()
+		}
+	}
 
 	// div = document.createElement("div")
 	// div.className = "tf-tree example"
