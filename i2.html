@@ -72,14 +72,14 @@ Valores éticos
 
 Sanções
 	PRAPRECD
-	Permanência
-	Repreensão
-	Advertência
-	Proibição A/U
-	Reforma
-	Expulsão
-	Custódia
-	Demissão
+		Permanência
+		Repreensão
+		Advertência
+		Proibição A/U
+		Reforma
+		Expulsão
+		Custódia
+		Demissão
 
 
 Advertência
@@ -103,12 +103,15 @@ Repreensão
 
 Permanência
 	Ficará na OPM ou OBM
-		Sem estar circunscrito
-		1
-			2
-			3
-				4
-				5</div>
+		Sem estar circunscrito a determinado compartimento
+		Comparecerá
+			Todos os atos de instrução
+			Serviço
+				Interno
+				Externo
+		Se convertido
+			Serviço extraordinário
+				não implique prejuízo para a hierarquia</div>
 
 
 
@@ -156,87 +159,53 @@ Permanência
 
 
 		}
+			u2 = document.createElement("ul")
+			u2.innerHTML = lista.join("")
 
-		u2 = document.createElement("ul")
-		u2.innerHTML = lista.join("")
+		function organiza(){
 
-		po = u2.querySelectorAll(".pos")
+			//joga pra cima
+			ql = u2.querySelectorAll("li")
 
-		for(i=0;i<u2.childElementCount*7;i++){
 
-			try{
-				proximo = u2.children[s].nextSibling
-
-				if(proximo.className != 'pos'){
-					u2.children[s].querySelector('ul').appendChild(proximo)
-				}else{
-					s++
-				}
-
-			}catch(e){}
-		}
-
-		for(j=0;j<3;j++){
-			for(i=u2.childElementCount-1;i>0;i--){
+			for(i=u2.childElementCount-1;i>=0;i--){
 				try{
 
-					// p1 = parseInt(u2.children[i].getAttribute("p"))
-					// p2 = parseInt(u2.children[i-1].getAttribute("p"))
+					p1 = u2.children[i-1].getAttribute("p")
+					p2 = u2.children[i].getAttribute("p")
 
-					p1 = tab(linha[i])
-					p2 = tab(linha[i-1])
 
-					if( p1 > p2 ){
-						// u2.children[u2.children.length-2].querySelector('ul').appendChild(u2.children[u2.children.length-1])
-						
-						u2.children[u2.children.length-2].querySelector('ul').appendChild(u2.children[u2.children.length-1])
-						// u2.children[i-1].querySelectorAll("ul").lastElementChild.appendChild(u2.children[i])
+
+					if(u2.children[i].className == "val"){
+						console.log(u2.children[i])
+
+						u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
 					}
 				}catch(e){}
 			}
 		}
 
-
-
-	try{
-		po[po.length-1].querySelector("ul").appendChild(u2.lastElementChild)
-	}catch(e){
-	}
-	try{
-		po[po.length-1].querySelector("ul").appendChild(u2.lastElementChild)
-	}catch(e){
-	}
-
-	// verifica posição tab
-	ql = u2.querySelectorAll("li")
-	
-	for(z=0;z<3;z++){
 		
-		for(i=0;i<ql.length;i++){
-			
-			cima = ql[i].parentElement
-			pup = parseInt(ql[i].parentElement.getAttribute("pos"))
-			patual = parseInt(ql[i].getAttribute("p"))
 
-			if(patual < pup){
-				// console.log(ql[i].parentElement)
-				// console.log(ql[i])
-				// console.log("ok")
+		function organiza2(){
+			for(i=u2.childElementCount-1;i>=0;i--){
+				try{
+					p1 = u2.children[i-1].getAttribute("p")
+					p2 = u2.children[i].getAttribute("p")
 
-				ql[i].parentElement.parentElement.appendChild(ql[i])
-				console.log('ok')
-				// ql[i].parentElement.parentElement.appendChild(ql[i])
+					if(p2 > p1){
+						u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
+					}
+				}catch(e){}
 			}
 		}
-	}
-	
 
-	// ultimo = u2.children[u2.childElementCount-1]
-	// if(ultimo.className == 'val'){
-	// 	po[po.length-1].querySelector("ul").appendChild(ultimo)
-	// }
+		for(j=0;j<10;j++){
+			organiza()
+			organiza2()
+		}
 
-	// ok.innerHTML = u2.outerHTML
+
 
 	return u2.outerHTML;
 
@@ -246,16 +215,10 @@ Permanência
 // go()
 
 
-	// div = document.createElement("div")
-	// div.className = "tf-tree example"
-	// div.appendChild(u2)
-	// document.body.appendChild(div)
-
 	d1 = cont.innerHTML.split("\n\n\n")
 
 	for(i of d1){
 		cont2.innerHTML += "<div class='tf-tree example'>"+go(i)+"</div>"
-		// console.log(go(i))
 	}
 	
 </script>

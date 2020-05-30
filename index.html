@@ -37,6 +37,7 @@
 		if(e.key == "Tab"){
 			e.preventDefault()
 			this.value+="\t"
+			go()
 		}
 	}
 
@@ -60,7 +61,6 @@
 		s = 0
 
 
-		
 		u2 = document.createElement("ul")
 
 		for(i=0;i<linha.length;i++){
@@ -77,72 +77,53 @@
 
 
 		}
+			u2 = document.createElement("ul")
+			u2.innerHTML = lista.join("")
 
-		u2 = document.createElement("ul")
-		u2.innerHTML = lista.join("")
+		function organiza(){
 
-		po = u2.querySelectorAll(".pos")
+			//joga pra cima
+			ql = u2.querySelectorAll("li")
 
-		for(i=0;i<u2.childElementCount*7;i++){
 
-			try{
-				proximo = u2.children[s].nextSibling
-
-				if(proximo.className != 'pos'){
-					u2.children[s].querySelector('ul').appendChild(proximo)
-				}else{
-					s++
-				}
-
-			}catch(e){}
-		}
-
-		for(j=0;j<3;j++){
-			for(i=u2.childElementCount-1;i>0;i--){
+			for(i=u2.childElementCount-1;i>=0;i--){
 				try{
 
-					// p1 = parseInt(u2.children[i].getAttribute("p"))
-					// p2 = parseInt(u2.children[i-1].getAttribute("p"))
+					p1 = u2.children[i-1].getAttribute("p")
+					p2 = u2.children[i].getAttribute("p")
 
-					p1 = tab(linha[i])
-					p2 = tab(linha[i-1])
 
-					if( p1 > p2 ){
-						u2.children[u2.children.length-2].querySelector('ul').appendChild(u2.children[u2.children.length-1])
-						// u2.children[i-1].querySelector("ul").appendChild(u2.children[i])
+
+					if(u2.children[i].className == "val"){
+						console.log(u2.children[i])
+
+						u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
 					}
-
-					console.log(u2.children[i])
 				}catch(e){}
 			}
 		}
 
-	try{
-		po[po.length-1].querySelector("ul").appendChild(u2.lastElementChild)
-	}catch(e){
-	}
-	try{
-		po[po.length-1].querySelector("ul").appendChild(u2.lastElementChild)
-	}catch(e){
-	}
+		
+		function organiza2(){
+			for(i=u2.childElementCount-1;i>=0;i--){
+				try{
+					p1 = u2.children[i-1].getAttribute("p")
+					p2 = u2.children[i].getAttribute("p")
 
-	// verifica posição tab
-	ql = u2.querySelectorAll("li")
-	
-	for(z=0;z<3;z++){
-		for(i=0;i<ql.length;i++){
-			pup = parseInt(ql[i].parentElement.getAttribute("pos"))
-			patual = parseInt(ql[i].getAttribute("p"))
-
-			if(patual < pup){
-				console.log(ql[i].parentElement)
-				console.log(ql[i])
-				console.log("ok")
-
-				ql[i].parentElement.parentElement.appendChild(ql[i])
+					if(p2 > p1){
+						u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
+					}
+				}catch(e){}
 			}
 		}
-	}
+
+		
+		for(j=0;j<10;j++){
+			organiza()
+			organiza2()
+		}
+
+
 
 	ok.innerHTML = u2.outerHTML
 
