@@ -1,6 +1,9 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 
 <style>
+	*{
+		transition: 0.5s;
+	}
 	body{
 		text-align: center;
 		font-family: ubuntu
@@ -12,19 +15,23 @@
 
 <!-- <link href="https://unpkg.com/treeflex/dist/css/treeflex.css" rel="stylesheet"> -->
 
-<textarea style="width: 450;height: 200" id="txt">1
-	2
-	3
-	4
-5
-	6
-	7
-		7.1
-		7.2
-		7.3
-	8
-		9
-		10</textarea>
+<textarea style="width: 450;height: 200" id="txt">Poder
+	Vinculado
+		Obedece à lei
+		Obrigação de agir
+	Discricionário
+		Liberdade ao agir
+		Razoabilidade
+	Hierárquico
+		Controle
+		Fiscalização
+	Disciplinar
+		Sanção
+		Pune servidores públicos
+	Regulamentar
+		Cria normas
+	de Polícia
+		Restringir direitos</textarea>
 <br><br>
 <div class="tf-tree example" id="ok"></div>
 
@@ -117,6 +124,48 @@
 			}catch(e){}
 		}
 
+		for(i=u2.childElementCount-1;i>0;i--){
+			try{
+				p1 = parseInt(u2.children[i].getAttribute("p"))
+				p2 = parseInt(u2.children[i-1].getAttribute("p"))
+
+				if( p1 > p2 ){
+					u2.children[i-1].querySelector("ul").appendChild(u2.children[i])
+				}
+			}catch(e){}
+		}
+
+		for(i=u2.childElementCount-1;i>0;i--){
+			try{
+				p1 = parseInt(u2.children[i].getAttribute("p"))
+				p2 = parseInt(u2.children[i-1].getAttribute("p"))
+
+				if( p1 > p2 ){
+					u2.children[i-1].querySelector("ul").appendChild(u2.children[i])
+				}
+			}catch(e){}
+		}
+
+		for(i=u2.childElementCount-1;i>0;i--){
+			try{
+				p1 = parseInt(u2.children[i].getAttribute("p"))
+				p2 = parseInt(u2.children[i-1].getAttribute("p"))
+
+				if( p1 > p2 ){
+					u2.children[i-1].querySelector("ul").appendChild(u2.children[i])
+				}
+			}catch(e){}
+		}
+		for(i=u2.childElementCount-1;i>0;i--){
+			try{
+				p1 = parseInt(u2.children[i].getAttribute("p"))
+				p2 = parseInt(u2.children[i-1].getAttribute("p"))
+
+				if( p1 > p2 ){
+					u2.children[i-1].querySelector("ul").appendChild(u2.children[i])
+				}
+			}catch(e){}
+		}
 		for(i=u2.childElementCount-1;i>0;i--){
 			try{
 				p1 = parseInt(u2.children[i].getAttribute("p"))
