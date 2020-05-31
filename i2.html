@@ -172,9 +172,14 @@ Demissão
 			Considerado
 				Moral ou profissionalmente inidôneo
 					Promoção ou revelar incompatibilidade para o exercício da função
-			Está
-				2 ou 4 anos alternados em mau comportamento
-					Processo regular</div>
+	Praça
+		Está
+			2 anos consecutivos
+			4 anos alternados em mau comportamento
+				Processo regular
+		Crime de deserção
+			Procedimento regular
+				Ampla defesa</div>
 
 
 
@@ -186,7 +191,22 @@ Demissão
 
 <script>
 
+	function ul_return(ara,casa){
 
+
+		for(q=0;q<ara.querySelectorAll('ul').length;q++){
+
+			// console.log(ara.children[q])	
+
+			if( parseInt(ara.children[q].getAttribute("p")) == casa ){
+				return ara.children[q]
+			}
+		}
+
+	}
+
+
+			
 	
 	function go(linha){
 
@@ -270,7 +290,7 @@ Demissão
 
 		function organiza3(){
 			
-			for(x=0;x<6;x++){
+			
 				for(i=u2.childElementCount;i>=0;i--){
 					try{
 						p1 = parseInt(u2.children[i-1].getAttribute("p"))
@@ -278,28 +298,37 @@ Demissão
 
 
 						if(p2 > p1){
-							ul_return(p2).appendChild(u2.children[i])
+							// alert('ok')
+							// ul_return(p2).appendChild(u2.children[i])
+							// ul_return(p2).appendChild(u2.children[i+1])
+							// ul_return(i).appendChild(u2.children[i-1])
+							// ul_return(i).appendChild(u2.children[i-1])
+							// u2.children[i-1].querySelector('ul')
+
+							// u3 = u2.children[i-1].querySelectorAll("ul")
+							
+							// ultimo = u2.children[i-1].querySelectorAll("ul")
+
+							// ultimo.appendChild(u2.children[i])
+							// alert('ok')
+
+							ul_return(u2,p2-1).querySelector('ul').appendChild(u2.children[i])
 						}
 
 					}catch(e){}
 				}
-			}
-		}
-
-
-		function ul_return(casa){
 			
-			for(q=0;q<u2.querySelectorAll('ul').length;q++){
-				if(q==casa)
-					return u2.querySelectorAll('ul')[q-1]
-			}
 		}
-		ul_return(3)
 
 
-		organiza()
-		organiza2()
-		organiza3()	
+		for(ti=0;ti<10;ti++){
+			organiza()
+			organiza2()
+			organiza3()	
+		}
+
+
+
 
 
 

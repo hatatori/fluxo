@@ -4,13 +4,7 @@
 
 		function tab(n){ try { return n.split("\t").length-1}catch(e){return 0} }
 
-		// linha = txt.value.split("\n")
 		linha = linha.split("\n")
-		// linha.shift()
-
-		
-
-		// ordem = txt.value.split("\n").map(e=>e.split(/\t/g).length-1)
 
 		ar = linha.map(e=>"<li>"+e.replace(/\t/g,"")+"</li>")
 
@@ -87,7 +81,7 @@
 
 		function organiza3(){
 			
-			for(x=0;x<6;x++){
+			
 				for(i=u2.childElementCount;i>=0;i--){
 					try{
 						p1 = parseInt(u2.children[i-1].getAttribute("p"))
@@ -95,28 +89,20 @@
 
 
 						if(p2 > p1){
-							ul_return(p2).appendChild(u2.children[i])
+							ul_return(u2,p2-1).querySelector('ul').appendChild(u2.children[i])
 						}
 
 					}catch(e){}
 				}
-			}
-		}
-
-
-		function ul_return(casa){
 			
-			for(q=0;q<u2.querySelectorAll('ul').length;q++){
-				if(q==casa)
-					return u2.querySelectorAll('ul')[q-1]
-			}
 		}
-		ul_return(3)
 
 
-		organiza()
-		organiza2()
-		organiza3()	
+		for(ti=0;ti<10;ti++){
+			organiza()
+			organiza2()
+			organiza3()	
+		}
 
 
 

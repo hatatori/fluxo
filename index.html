@@ -31,7 +31,13 @@ Demissão
 <script>
 
 
-
+	function ul_return(ara,casa){
+		for(q=0;q<ara.querySelectorAll('ul').length;q++){
+			if( parseInt(ara.children[q].getAttribute("p")) == casa ){
+				return ara.children[q]
+			}
+		}
+	}
 	
 	
 	function go(){
@@ -117,7 +123,7 @@ Demissão
 
 		function organiza3(){
 			
-			for(x=0;x<6;x++){
+			
 				for(i=u2.childElementCount;i>=0;i--){
 					try{
 						p1 = parseInt(u2.children[i-1].getAttribute("p"))
@@ -125,34 +131,22 @@ Demissão
 
 
 						if(p2 > p1){
-							ul_return(p2).appendChild(u2.children[i])
+							ul_return(u2,p2-1).querySelector('ul').appendChild(u2.children[i])
 						}
 
 					}catch(e){}
 				}
-			}
-		}
-
-
-		function ul_return(casa){
 			
-			for(q=0;q<u2.querySelectorAll('ul').length;q++){
-				if(q==casa)
-					return u2.querySelectorAll('ul')[q-1]
-			}
 		}
-		ul_return(3)
 
 
-		organiza()
-		organiza2()
-		organiza3()	
-
-		
+		for(ti=0;ti<10;ti++){
+			organiza()
+			organiza2()
+			organiza3()	
+		}
 
 		ok.innerHTML = u2.outerHTML
-
-		// console.log(u2.outerHTML)
 	}
 
 	go()
