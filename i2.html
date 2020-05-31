@@ -13,7 +13,14 @@
 
 	img{width: 50}
 
-	#cont2 div{padding: 100 0}
+	#cont2 div{
+		padding: 100 0;
+		/*transform: scale(0.5);*/
+	}
+
+	/*#cont2 *{
+		font-size: 10
+	}*/
 </style>
 
 
@@ -112,24 +119,45 @@ Permanência
 		Se convertido
 			Serviço extraordinário
 				não implique prejuízo para a hierarquia
+	Considerar-se-á
+		1 dia de serviço extraordinário
+		1 dia de permanência
+	Pedido de conversão
+		3 dias
+	Serviço extraordinário
+		Nunca
+			inferior a 6 dias
+			superior a 8 horas
 
 
-Valores éticos
-	HC3
-		Hierarquia
-		Honra
-		Honesti..
-		Civismo
-		Coragem
-		Constância
-	DP2
-		Disciplina
-		Digni..
-		Patriot..
-		Prifisiona..
-	VL
-		Verdade
-		Lealdade</div>
+Custódia
+	Retenção do militar
+		Sem participar
+			Serviço, Instrução, Atividade
+		Sem estar cincrunscrito a determinado comportamento
+	Perderá todas
+		Vantagens decorrentes do exercício, inclusive
+			Computar o tempo para promoção
+	Somente poderá ser aplicada
+		Reincidência de natureza grave
+	Aplicação
+		Secretário
+		Comandante-geral
+		Coronel
+		Governador
+
+
+Reforma
+	Aplicada
+		Processo regular
+	Oficial
+		Incompatível ou indigno
+			Passada em julgado no Tribunal competente
+				Salvo
+					Caso de demissão
+	Praça
+		Incompatível com a função militar
+		Nociva à disciplina</div>
 
 
 
@@ -218,7 +246,7 @@ Valores éticos
 						nome1 = u2.children[i-1].getAttribute("class")
 						nome2 = u2.children[i].getAttribute("class")
 
-						if(p2 > p1 || nome1 != nome2){
+						if(p2 > p1 && nome1 == nome2){
 							u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
 						}
 					}catch(e){}
@@ -226,12 +254,11 @@ Valores éticos
 			}
 		}
 
-		for(vx=0;vx<10;vx++){
+		for(vx=0;vx<20;vx++){
 			organiza()
-		}
-		
-		for(vx=0;vx<10;vx++){
 			organiza2()
+			// organiza()
+			// organiza()
 		}
 
 

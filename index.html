@@ -106,7 +106,7 @@
 						nome1 = u2.children[i-1].getAttribute("class")
 						nome2 = u2.children[i].getAttribute("class")
 
-						if(p2 > p1 || nome1 != nome2){
+						if(p2 > p1 && nome1 == nome2){
 							u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
 						}
 					}catch(e){}
@@ -114,13 +114,15 @@
 			}
 		}
 
-		for(vx=0;vx<10;vx++){
+		for(vx=0;vx<20;vx++){
 			organiza()
+			organiza2()
+			// organiza()
+			// organiza()
 		}
 		
-		for(vx=0;vx<10;vx++){
-			organiza2()
-		}
+		// for(vx=0;vx<10;vx++){
+		// }
 
 
 
