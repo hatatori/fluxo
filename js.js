@@ -95,7 +95,7 @@
 
 
 					if(p2 < p1){
-						ul_return(i).appendChild(u2.children[i-1])
+						ul_return(p2).appendChild(u2.children[i])
 					}
 
 				}catch(e){}

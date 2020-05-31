@@ -27,7 +27,10 @@
 <!-- <link href="https://unpkg.com/treeflex/dist/css/treeflex.css" rel="stylesheet"> -->
 
 
-<div class='invisible' id="cont" >Código
+<div class='invisible' id="cont" >https://www.pm.ce.gov.br/wp-content/uploads/sites/25/2019/03/lei_13.407-C%C3%B3digo-Disciplinar.pdf
+
+
+Código
 	Sujeitos
 		Ativos
 		Reserva
@@ -37,11 +40,11 @@
 		Reformados
 
 
-	Grau hierárquico
-		Graduação
-			Praças
-		Posto
-			Oficiais
+Grau hierárquico
+	Graduação
+		Praças
+	Posto
+		Oficiais
 
 
 Antiguidade
@@ -97,8 +100,6 @@ Advertência
 				Nota corretiva das praças
 	Natureza
 		Leve
-
-
 Repreensão
 	Escrito
 	Publicada em boletim
@@ -163,13 +164,18 @@ Reforma
 
 
 Demissão
-	a
-		b
-			c
-			d
-			e
-		f
-	a</div>
+	Oficial
+		Condenado
+			Justiça Comum ou Militar
+				Pena privativa de liberdade por tempo +2 anos
+				Pena de perda da função pública
+			Considerado
+				Moral ou profissionalmente inidôneo
+					Promoção ou revelar incompatibilidade para o exercício da função
+
+
+
+		</div>
 
 
 
@@ -187,15 +193,10 @@ Demissão
 
 		function tab(n){ try { return n.split("\t").length-1}catch(e){return 0} }
 
-		// linha = txt.value.split("\n")
 		linha = linha.split("\n")
-		// linha.shift()
 
-		
 
-		// ordem = txt.value.split("\n").map(e=>e.split(/\t/g).length-1)
-
-	ar = linha.map(e=>"<li>"+e.replace(/\t/g,"")+"</li>")
+		ar = linha.map(e=>"<li>"+e.replace(/\t/g,"")+"</li>")
 
 		lista = []
 		s = 0
@@ -271,53 +272,55 @@ Demissão
 		function organiza3(){
 			
 			
-				for(i=u2.childElementCount;i>=0;i--){
-					try{
-						p1 = u2.children[i-1].getAttribute("p")
-						p2 = u2.children[i].getAttribute("p")
+			for(i=u2.childElementCount;i>=0;i--){
+				try{
+					p1 = parseInt(u2.children[i-1].getAttribute("p"))
+					p2 = parseInt(u2.children[i].getAttribute("p"))
 
 
-					if(p2 < p1){
-						ul_return(i).appendChild(u2.children[i-1])
+					if(p2 > p1){
+						ul_return(p2).appendChild(u2.children[i])
 					}
 
 				}catch(e){}
+			}
 		}
-	}
 
 
 		function ul_return(casa){
-		    
-		    for(q=0;q<u2.querySelectorAll('ul').length;q++){
-		        if(q==casa)
-		            return u2.querySelectorAll('ul')[q-1]
-		    }
+			
+			for(q=0;q<u2.querySelectorAll('ul').length;q++){
+				if(q==casa)
+					return u2.querySelectorAll('ul')[q-1]
+			}
 		}
 		ul_return(3)
 
 
+		
+
 		for(nx=0;nx<10;nx++){
 			organiza()
 			organiza2()
-			organiza3()
+			organiza3()	
 		}
 
 
 
 
 
-	return u2.outerHTML;
+		return u2.outerHTML;
 
-	
-}
+
+	}
 
 // go()
 
 
-	d1 = cont.innerHTML.split("\n\n\n")
+d1 = cont.innerHTML.split("\n\n\n")
 
-	for(i of d1){
-		cont2.innerHTML += "<div class='tf-tree example'>"+go(i)+"</div>"
-	}
+for(i of d1){
+	cont2.innerHTML += "<div class='tf-tree example'>"+go(i)+"</div>"
+}
 	
 </script>
