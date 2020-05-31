@@ -87,18 +87,19 @@
 
 		function organiza3(){
 			
-			
-			for(i=u2.childElementCount;i>=0;i--){
-				try{
-					p1 = u2.children[i-1].getAttribute("p")
-					p2 = u2.children[i].getAttribute("p")
+			for(x=0;x<6;x++){
+				for(i=u2.childElementCount;i>=0;i--){
+					try{
+						p1 = parseInt(u2.children[i-1].getAttribute("p"))
+						p2 = parseInt(u2.children[i].getAttribute("p"))
 
 
-					if(p2 < p1){
-						ul_return(p2).appendChild(u2.children[i])
-					}
+						if(p2 > p1){
+							ul_return(p2).appendChild(u2.children[i])
+						}
 
-				}catch(e){}
+					}catch(e){}
+				}
 			}
 		}
 
@@ -113,11 +114,9 @@
 		ul_return(3)
 
 
-		for(nx=0;nx<10;nx++){
-			organiza()
-			organiza2()
-			organiza3()
-		}
+		organiza()
+		organiza2()
+		organiza3()	
 
 
 
