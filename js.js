@@ -101,7 +101,7 @@
 		for(ti=0;ti<10;ti++){
 			organiza()
 			organiza2()
-			organiza3()	
+			// organiza3()	
 		}
 
 

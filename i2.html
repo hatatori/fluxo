@@ -45,8 +45,6 @@ Grau hierárquico
 		Praças
 	Posto
 		Oficiais
-
-
 Antiguidade
 	Data
 	Prevalência
@@ -173,13 +171,15 @@ Demissão
 				Moral ou profissionalmente inidôneo
 					Promoção ou revelar incompatibilidade para o exercício da função
 	Praça
-		Está
+		Transgressão disciplinar grave
 			2 anos consecutivos
 			4 anos alternados em mau comportamento
 				Processo regular
+		Atos incompatíveis com a função
 		Crime de deserção
 			Procedimento regular
-				Ampla defesa</div>
+				Ampla defesa
+		Desertora e Capturada ou Apresentada</div>
 
 
 
@@ -192,17 +192,11 @@ Demissão
 <script>
 
 	function ul_return(ara,casa){
-
-
 		for(q=0;q<ara.querySelectorAll('ul').length;q++){
-
-			// console.log(ara.children[q])	
-
 			if( parseInt(ara.children[q].getAttribute("p")) == casa ){
 				return ara.children[q]
 			}
 		}
-
 	}
 
 
@@ -324,7 +318,7 @@ Demissão
 		for(ti=0;ti<10;ti++){
 			organiza()
 			organiza2()
-			organiza3()	
+			// organiza3()	
 		}
 
 
