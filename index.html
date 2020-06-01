@@ -15,17 +15,15 @@
 
 <!-- <link href="https://unpkg.com/treeflex/dist/css/treeflex.css" rel="stylesheet"> -->
 
-<textarea style="width: 450;height: 200" id="txt">1
-	2
-	3
-	4
-		5
-	6
-	7
-		8
-		9
-		10
-			11</textarea>
+<textarea style="width: 450;height: 200" id="txt">a
+	b
+		c
+			d
+				e
+				f
+		g
+			h
+				i</textarea>
 <br><br>
 <div class="tf-tree example" id="ok"></div>
 
@@ -35,12 +33,21 @@
 	function ul_return(ara,casa){
 		for(q=0;q<ara.querySelectorAll('ul').length;q++){
 			if( parseInt(ara.children[q].getAttribute("p")) == casa ){
-				return ara.children[q]
+				// i = 1
+				// p2 = 2
+				return u2.children[i-1].querySelectorAll('ul')[casa]
 			}
 		}
 	}
-	
-	
+
+	// i = 1
+	// p2 = 2
+	// el = u2.children[i-1].querySelectorAll('ul')[p2-1]
+
+	// el.appendChild(u2.children[i])
+
+
+
 	function go(){
 
 		function tab(n){ try { return n.split("\t").length-1}catch(e){return 0} }
@@ -63,13 +70,11 @@
 		}
 
 		for(i=0;i<lista.length;i++){
-			if(tab(linha[i+1]) > tab(linha[i])){
+			if(tab(linha[i+1]) > tab(linha[i]))
 				lista[i] = "<li class='pos' p="+tab(linha[i])+"><span class='tf-nc'>"+lista[i]+"</span><ul pos='"+tab(linha[i+1])+"'></ul></li>"
-			}else{
+			else
 				lista[i] = "<li class='val' p="+tab(linha[i])+"><span class='tf-nc'>"+lista[i]+"</span></li>"
-			}
-
-
+			
 		}
 
 		u2 = document.createElement("ul")
@@ -88,13 +93,9 @@
 						nome1 = u2.children[i-1].getAttribute("class")
 						nome2 = u2.children[i].getAttribute("class")
 
-
-
-						if(u2.children[i].className == "val" && p1 < p2){
-
+						if(u2.children[i].className == "val" && p1 < p2)
 							u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
 
-						}
 					}catch(e){}
 				}
 			}
@@ -105,17 +106,16 @@
 		function organiza2(){
 			
 			for(i=u2.childElementCount;i>=0;i--){
+
 				try{
+
 					p1 = u2.children[i-1].getAttribute("p")
 					p2 = u2.children[i].getAttribute("p")
 					
 					nome1 = u2.children[i-1].getAttribute("class")
 					nome2 = u2.children[i].getAttribute("class")
 
-					if(nome1 == nome2 && p2 > p1){
-						u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
-					}
-
+					if(nome1 == nome2 && p2 > p1) u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
 
 				}catch(e){}
 
@@ -123,28 +123,29 @@
 		}
 
 		function organiza3(){
-			
-			
-				for(i=u2.childElementCount;i>=0;i--){
-					try{
-						p1 = parseInt(u2.children[i-1].getAttribute("p"))
-						p2 = parseInt(u2.children[i].getAttribute("p"))
+
+			for(i=u2.childElementCount;i>=0;i--){
+				try{
+					p1 = parseInt(u2.children[i-1].getAttribute("p"))
+					p2 = parseInt(u2.children[i].getAttribute("p"))
 
 
-						if(p2 > p1){
-							ul_return(u2,p2-1).querySelector('ul').appendChild(u2.children[i])
-						}
+					if(p2 > p1){
 
-					}catch(e){}
-				}
-			
+						el = u2.children[i-1].querySelectorAll('ul')[p2-1]
+						el.appendChild(u2.children[i])
+
+					}
+
+				}catch(e){}
+			}
 		}
 
 
 		for(ti=0;ti<10;ti++){
 			organiza()
 			organiza2()
-			// organiza3()	
+			organiza3()	
 		}
 
 		ok.innerHTML = u2.outerHTML
@@ -161,6 +162,7 @@
 		for(vx=0;vx<10;vx++){
 			organiza()
 			organiza2()
+			organiza3()	
 		}
 	}
 
@@ -169,6 +171,7 @@
 		for(vx=0;vx<1;vx++){
 			organiza()
 			organiza2()
+			organiza3()	
 		}
 	}
 

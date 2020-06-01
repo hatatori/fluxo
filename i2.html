@@ -167,9 +167,9 @@ Demissão
 			Condenado em Justiça Comum ou Militar
 				Pena privativa de liberdade por tempo +2 anos
 				Pena de perda da função pública
-			Considerado
-				Moral ou profissionalmente inidôneo
-					Promoção ou revelar incompatibilidade para o exercício da função
+		Considerado
+			Moral ou profissionalmente inidôneo
+				Promoção ou revelar incompatibilidade para o exercício da função
 	Praça
 		Transgressão disciplinar grave
 			2 anos consecutivos
@@ -179,7 +179,24 @@ Demissão
 		Crime de deserção
 			Procedimento regular
 				Ampla defesa
-		Desertora e Capturada ou Apresentada</div>
+		Desertora e Capturada ou Apresentada
+			Submetida a exame de saúde
+
+
+Expulsão
+	Praça
+		Processo regular
+			Segurança das instituições
+			Praticar atos desonrosos Ofensivos ao decoro
+				Greve ou em passeatas
+					Armado
+						Ato atentatório contra a segurança das instituições
+Proibição do Uso de Uniformes e de Porte de Arma
+	Temporariamente
+		Inativo
+			Que atentar contra o decoro ou a dignidade	
+	Limite
+		1 ano</div>
 
 
 
@@ -223,13 +240,11 @@ Demissão
 		}
 
 		for(i=0;i<lista.length;i++){
-			if(tab(linha[i+1]) > tab(linha[i])){
+			if(tab(linha[i+1]) > tab(linha[i]))
 				lista[i] = "<li class='pos' p="+tab(linha[i])+"><span class='tf-nc'>"+lista[i]+"</span><ul pos='"+tab(linha[i+1])+"'></ul></li>"
-			}else{
+			else
 				lista[i] = "<li class='val' p="+tab(linha[i])+"><span class='tf-nc'>"+lista[i]+"</span></li>"
-			}
-
-
+			
 		}
 
 		u2 = document.createElement("ul")
@@ -248,13 +263,9 @@ Demissão
 						nome1 = u2.children[i-1].getAttribute("class")
 						nome2 = u2.children[i].getAttribute("class")
 
-
-
-						if(u2.children[i].className == "val" && p1 < p2){
-
+						if(u2.children[i].className == "val" && p1 < p2)
 							u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
 
-						}
 					}catch(e){}
 				}
 			}
@@ -265,17 +276,16 @@ Demissão
 		function organiza2(){
 			
 			for(i=u2.childElementCount;i>=0;i--){
+
 				try{
+
 					p1 = u2.children[i-1].getAttribute("p")
 					p2 = u2.children[i].getAttribute("p")
 					
 					nome1 = u2.children[i-1].getAttribute("class")
 					nome2 = u2.children[i].getAttribute("class")
 
-					if(nome1 == nome2 && p2 > p1){
-						u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
-					}
-
+					if(nome1 == nome2 && p2 > p1) u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
 
 				}catch(e){}
 
@@ -283,42 +293,29 @@ Demissão
 		}
 
 		function organiza3(){
-			
-			
-				for(i=u2.childElementCount;i>=0;i--){
-					try{
-						p1 = parseInt(u2.children[i-1].getAttribute("p"))
-						p2 = parseInt(u2.children[i].getAttribute("p"))
+
+			for(i=u2.childElementCount;i>=0;i--){
+				try{
+					p1 = parseInt(u2.children[i-1].getAttribute("p"))
+					p2 = parseInt(u2.children[i].getAttribute("p"))
 
 
-						if(p2 > p1){
-							// alert('ok')
-							// ul_return(p2).appendChild(u2.children[i])
-							// ul_return(p2).appendChild(u2.children[i+1])
-							// ul_return(i).appendChild(u2.children[i-1])
-							// ul_return(i).appendChild(u2.children[i-1])
-							// u2.children[i-1].querySelector('ul')
+					if(p2 > p1){
 
-							// u3 = u2.children[i-1].querySelectorAll("ul")
-							
-							// ultimo = u2.children[i-1].querySelectorAll("ul")
+						el = u2.children[i-1].querySelectorAll('ul')[p2-1]
+						el.appendChild(u2.children[i])
 
-							// ultimo.appendChild(u2.children[i])
-							// alert('ok')
+					}
 
-							ul_return(u2,p2-1).querySelector('ul').appendChild(u2.children[i])
-						}
-
-					}catch(e){}
-				}
-			
+				}catch(e){}
+			}
 		}
 
 
 		for(ti=0;ti<10;ti++){
 			organiza()
 			organiza2()
-			// organiza3()	
+			organiza3()	
 		}
 
 

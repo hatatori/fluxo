@@ -20,13 +20,11 @@
 		}
 
 		for(i=0;i<lista.length;i++){
-			if(tab(linha[i+1]) > tab(linha[i])){
+			if(tab(linha[i+1]) > tab(linha[i]))
 				lista[i] = "<li class='pos' p="+tab(linha[i])+"><span class='tf-nc'>"+lista[i]+"</span><ul pos='"+tab(linha[i+1])+"'></ul></li>"
-			}else{
+			else
 				lista[i] = "<li class='val' p="+tab(linha[i])+"><span class='tf-nc'>"+lista[i]+"</span></li>"
-			}
-
-
+			
 		}
 
 		u2 = document.createElement("ul")
@@ -45,13 +43,9 @@
 						nome1 = u2.children[i-1].getAttribute("class")
 						nome2 = u2.children[i].getAttribute("class")
 
-
-
-						if(u2.children[i].className == "val" && p1 < p2){
-
+						if(u2.children[i].className == "val" && p1 < p2)
 							u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
 
-						}
 					}catch(e){}
 				}
 			}
@@ -62,17 +56,16 @@
 		function organiza2(){
 			
 			for(i=u2.childElementCount;i>=0;i--){
+
 				try{
+
 					p1 = u2.children[i-1].getAttribute("p")
 					p2 = u2.children[i].getAttribute("p")
 					
 					nome1 = u2.children[i-1].getAttribute("class")
 					nome2 = u2.children[i].getAttribute("class")
 
-					if(nome1 == nome2 && p2 > p1){
-						u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
-					}
-
+					if(nome1 == nome2 && p2 > p1) u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
 
 				}catch(e){}
 
@@ -80,28 +73,29 @@
 		}
 
 		function organiza3(){
-			
-			
-				for(i=u2.childElementCount;i>=0;i--){
-					try{
-						p1 = parseInt(u2.children[i-1].getAttribute("p"))
-						p2 = parseInt(u2.children[i].getAttribute("p"))
+
+			for(i=u2.childElementCount;i>=0;i--){
+				try{
+					p1 = parseInt(u2.children[i-1].getAttribute("p"))
+					p2 = parseInt(u2.children[i].getAttribute("p"))
 
 
-						if(p2 > p1){
-							ul_return(u2,p2-1).querySelector('ul').appendChild(u2.children[i])
-						}
+					if(p2 > p1){
 
-					}catch(e){}
-				}
-			
+						el = u2.children[i-1].querySelectorAll('ul')[p2-1]
+						el.appendChild(u2.children[i])
+
+					}
+
+				}catch(e){}
+			}
 		}
 
 
 		for(ti=0;ti<10;ti++){
 			organiza()
 			organiza2()
-			// organiza3()	
+			organiza3()	
 		}
 
 
