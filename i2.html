@@ -1,33 +1,12 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 
-<style>
-	*{
-		transition: 0.5s;
-	}
-	body{
-		text-align: center;
-		font-family: ubuntu;
-	}
-
-	.invisible{display: none}
-
-	img{width: 50}
-
-	#cont2 div{
-		padding: 100 0;
-		/*transform: scale(0.5);*/
-	}
-
-	/*#cont2 *{
-		font-size: 10
-	}*/
-</style>
+<link rel="stylesheet" type="text/css" href="style2.css">
 
 
 <!-- <link href="https://unpkg.com/treeflex/dist/css/treeflex.css" rel="stylesheet"> -->
 
 
-<div class='invisible' id="cont" >https://www.pm.ce.gov.br/wp-content/uploads/sites/25/2019/03/lei_13.407-C%C3%B3digo-Disciplinar.pdf
+<div class='invisible' id="cont" ><a href='https://belt.al.ce.gov.br/index.php/legislacao-do-ceara/organizacao-tematica/trabalho-administracao-e-servico-publico/item/6268-lei-n-13-407-de-21-11-03-d-o-de-02-12-03' target="_blank">Código disciplinar</a>
 
 
 Código
@@ -62,22 +41,11 @@ Deotologia
 
 Valores éticos
 	HC3
-		Hierarquia
-		Honra
-		Honesti..
-		Civismo
-		Coragem
-		Constância
+		Hierarquia;Honra;Honestidade;Civismo;Coragem;Constância
 	DP2
-		Disciplina
-		Digni..
-		Patriot..
-		Prifisiona..
+		Disciplina;Dignidade;Patriotismo;Prifisionalismo
 	VL
-		Verdade
-		Lealdade
-
-
+		Verdade;Lealdade
 Sanções
 	PRAPRECD
 		Permanência
@@ -196,7 +164,68 @@ Proibição do Uso de Uniformes e de Porte de Arma
 		Inativo
 			Que atentar contra o decoro ou a dignidade	
 	Limite
-		1 ano</div>
+		1 ano
+
+
+Recolhimento Transitório
+	Não constitui sanção disciplinar
+	Medida
+		Preventiva e acautelatória
+	Consistente
+		Desarmamento
+		Recolhimento do PM à prisão
+		Sem nota em boletim
+	Adotada
+		Autoria de crime militar
+		Transgressão militar se necessário
+
+
+Recolhimento Transitório
+	Somente por 
+		Superior hierárquico ; Oficial com precedência
+	Sempre comunidadas
+		Juiz;MP;Controlador Geral
+	Motivos
+		Agressivo ou violento
+		Investigações para apuração
+		Substância entorpecente
+	Prazo Max
+		5 dias
+	Não sofrerá prejuízo
+		Funcional
+		Remuneratório
+	Direitos
+		JICOA
+			J Justificação por escrito
+			I Indenficação do responsável
+			C Comuncação imediata no local
+			O Ocupação no mesmo círculo hierárquico
+			A Apresentação de recurso
+	Interpor recurso
+		Comandante
+			Encaminhará ao superior
+				A quem incumbirá a decisão
+		Prazo 2 dias úteis
+			Se passar do prazo sem decisão de recurso
+				Será liberado
+
+
+Procedimento Disciplinar
+	Comunicação Disciplinar
+		SUP→SUB
+			Relatar transgressão do subordinado
+			Formal
+				Clara, con­cisa e precisa
+				Dados capazes de identificar
+					Pessoas ou coisas en­vol­vidas;local;data;hora do fato
+					Circunstâncias;Alegações
+		Prazo
+			5 dias
+		Caso indiciado
+			Terá 3 dias para se manifestar	
+
+
+</div>
 
 
 
@@ -208,21 +237,21 @@ Proibição do Uso de Uniformes e de Porte de Arma
 
 <script>
 
-	function ul_return(ara,casa){
-		for(q=0;q<ara.querySelectorAll('ul').length;q++){
-			if( parseInt(ara.children[q].getAttribute("p")) == casa ){
-				return ara.children[q]
-			}
-		}
+
+	function encontra_ul(a,b){
+	    return a.querySelectorAll("ul")[b]
 	}
 
-
+	function joga(a,b){
+	    a.appendChild(b)
+	}
 			
 	
 	function go(linha){
 
 		function tab(n){ try { return n.split("\t").length-1}catch(e){return 0} }
 
+		linha = linha.replace(/;/g,"<br>")
 		linha = linha.split("\n")
 
 
@@ -263,15 +292,15 @@ Proibição do Uso de Uniformes e de Porte de Arma
 						nome1 = u2.children[i-1].getAttribute("class")
 						nome2 = u2.children[i].getAttribute("class")
 
+						filho = u2.children
+
 						if(u2.children[i].className == "val" && p1 < p2)
-							u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
+							joga(filho[i-1].querySelector('ul'),filho[i])
 
 					}catch(e){}
 				}
 			}
 		}
-
-		
 
 		function organiza2(){
 			
@@ -285,45 +314,38 @@ Proibição do Uso de Uniformes e de Porte de Arma
 					nome1 = u2.children[i-1].getAttribute("class")
 					nome2 = u2.children[i].getAttribute("class")
 
-					if(nome1 == nome2 && p2 > p1) u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
+					nin = u2.children[i-1].querySelector('ul').getAttribute("pos")
 
-				}catch(e){}
+					filho = u2.children
 
-			}
-		}
-
-		function organiza3(){
-
-			for(i=u2.childElementCount;i>=0;i--){
-				try{
-					p1 = parseInt(u2.children[i-1].getAttribute("p"))
-					p2 = parseInt(u2.children[i].getAttribute("p"))
+					if(p2 > p1 && p2 == nin){
 
 
-					if(p2 > p1){
+						joga(filho[i-1].querySelector('ul'),filho[i])
+						
+						filho = u2.children
 
-						el = u2.children[i-1].querySelectorAll('ul')[p2-1]
-						el.appendChild(u2.children[i])
 
+						get1 = parseInt(filho[i].getAttribute("p"))
+						get2 = parseInt(filho[i-1].getAttribute("pos"))
+
+
+						if(get1 == filho[i-1].querySelectorAll('ul')[0].getAttribute("pos")){
+							joga(filho[i-1].querySelectorAll('ul')[0],filho[i])
+							joga(filho[i-1].querySelectorAll('ul')[0],filho[i])
+						}
 					}
 
 				}catch(e){}
+
 			}
 		}
 
+		organiza()
 
-		for(ti=0;ti<10;ti++){
-			organiza()
+		for(ti=0;ti<20;ti++){
 			organiza2()
-			organiza3()	
 		}
-
-
-
-
-
-
-
 
 
 		return u2.outerHTML;

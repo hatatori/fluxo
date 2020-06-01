@@ -93,7 +93,7 @@ function encontra_ul(a,b){
 
 						if(get1 == filho[i-1].querySelectorAll('ul')[0].getAttribute("pos")){
 							joga(filho[i-1].querySelectorAll('ul')[0],filho[i])
-							console.log(i)
+							joga(filho[i-1].querySelectorAll('ul')[0],filho[i])
 						}
 					}
 

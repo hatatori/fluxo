@@ -15,32 +15,19 @@
 
 <!-- <link href="https://unpkg.com/treeflex/dist/css/treeflex.css" rel="stylesheet"> -->
 
-<textarea style="width: 450;height: 200" id="txt">Recolhimento Transitório
-	Somente por 
-		Superior hierárquico ; Oficial com precedência
-	Sempre comunidadas
-		Juiz;MP;Controlador Geral
-	Motivos
-		Agressivo ou violento
-		Investigações para apuração
-		Substância entorpecente
-	Prazo Max
-		5 dias
-	Não sofrerá prejuízo
-		Funcional
-		Remuneratório
-	Direitos
-		JICOA
-			J Justificação por escrito
-			I Indenficação do responsável
-			C Comuncação imediata no local
-			O Ocupação no mesmo círculo hierárquico
-			A Apresentação de recurso
-	Interpor recurso
-		Comandante
-			Encaminhará ao superior
-				A quem incubirá a decisão
-		Prazo 2 dias úteis</textarea>
+<textarea style="width: 450;height: 200" id="txt">Procedimento Disciplinar
+	Comunicação Disciplinar
+		SUP→SUB
+			Relatar transgressão do subordinado
+			Formal
+				Clara, con­cisa e precisa
+				Dados capazes de identificar
+					Pessoas ou coisas en­vol­vidas;local;data;hora do fato
+					Circunstâncias;Alegações
+		Prazo
+			5 dias
+		Caso indiciado
+			Terá 3 dias para se manifestar	</textarea>
 <br><br>
 <div class="tf-tree example" id="ok"></div>
 
@@ -152,8 +139,11 @@
 
 						if(get1 == filho[i-1].querySelectorAll('ul')[0].getAttribute("pos")){
 							joga(filho[i-1].querySelectorAll('ul')[0],filho[i])
+							joga(filho[i-1].querySelectorAll('ul')[0],filho[i])
 							console.log(i)
 						}
+
+
 					}
 
 				}catch(e){}
