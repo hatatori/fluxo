@@ -1,4 +1,14 @@
+function encontra_ul(a,b){
+	    return a.querySelectorAll("ul")[b]
+	}
 
+	function joga_pra_cima(n){
+	    u2.children[n-1].querySelector('ul').appendChild(u2.children[n])
+	}
+
+	function joga(a,b){
+	    a.appendChild(b)
+	}
 	
 	function go(linha){
 
@@ -43,15 +53,15 @@
 						nome1 = u2.children[i-1].getAttribute("class")
 						nome2 = u2.children[i].getAttribute("class")
 
+						filho = u2.children
+
 						if(u2.children[i].className == "val" && p1 < p2)
-							u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
+							joga(filho[i-1].querySelector('ul'),filho[i])
 
 					}catch(e){}
 				}
 			}
 		}
-
-		
 
 		function organiza2(){
 			
@@ -65,37 +75,37 @@
 					nome1 = u2.children[i-1].getAttribute("class")
 					nome2 = u2.children[i].getAttribute("class")
 
-					if(nome1 == nome2 && p2 > p1) u2.children[i-1].querySelector('ul').appendChild(u2.children[i])
+					nin = u2.children[i-1].querySelector('ul').getAttribute("pos")
 
-				}catch(e){}
+					filho = u2.children
 
-			}
-		}
-
-		function organiza3(){
-
-			for(i=u2.childElementCount;i>=0;i--){
-				try{
-					p1 = parseInt(u2.children[i-1].getAttribute("p"))
-					p2 = parseInt(u2.children[i].getAttribute("p"))
+					if(p2 > p1 && p2 == nin){
 
 
-					if(p2 > p1){
+						joga(filho[i-1].querySelector('ul'),filho[i])
+						
+						filho = u2.children
 
-						el = u2.children[i-1].querySelectorAll('ul')[p2-1]
-						el.appendChild(u2.children[i])
 
+						get1 = parseInt(filho[i].getAttribute("p"))
+						get2 = parseInt(filho[i-1].getAttribute("pos"))
+
+
+						if(get1 == filho[i-1].querySelectorAll('ul')[0].getAttribute("pos")){
+							joga(filho[i-1].querySelectorAll('ul')[0],filho[i])
+							console.log(i)
+						}
 					}
 
 				}catch(e){}
+
 			}
 		}
 
+		organiza()
 
 		for(ti=0;ti<10;ti++){
-			organiza()
 			organiza2()
-			organiza3()	
 		}
 
 
