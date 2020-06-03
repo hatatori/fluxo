@@ -163,6 +163,8 @@ Expulsão
 				Greve ou em passeatas
 					Armado
 						Ato atentatório contra a segurança das instituições
+
+
 Proibição do Uso de Uniformes e de Porte de Arma
 	Temporariamente
 		Inativo
@@ -308,10 +310,12 @@ Competência e limites
 <script>
 
 
-d1 = cont.innerHTML.split("\n\n\n")
+try{
+	d1 = cont.innerHTML.split("\n\n\n")
 
-for(i of d1){
-	cont2.innerHTML += "<div class='tf-tree example'>"+render(i)+"</div>"
+	for(i of d1){
+		cont2.innerHTML += "<div class='tf-tree example'>"+render(i)+"</div>"
+	}
 }
 	
 </script>
