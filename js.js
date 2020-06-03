@@ -199,7 +199,7 @@ function getP(n){
 		organiza4()
 
 
-		ok.innerHTML = u.outerHTML
+		// ok.innerHTML = u.outerHTML
 
 		return u.outerHTML
 	}
