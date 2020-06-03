@@ -52,6 +52,7 @@ function getP(n){
 		t = ""
 
 		// linha = txt.value.split("\n");
+		a = a.replace(/;/g,"<br>")
 		linha = a.split("\n")
 
 		u = document.createElement("ul")
