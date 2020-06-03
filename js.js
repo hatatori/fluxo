@@ -137,8 +137,30 @@ function getP(n){
 					u.querySelectorAll("li")[i].parentElement.parentElement.appendChild(u.querySelectorAll("li")[i])
 			}
 		}catch(e){}
-
 	}
+
+	function organiza4(){
+		for( i = linha.length-1 ;  i >= 0 ;i--){
+			try{
+
+				igual = getP(i) == getP(i-1)
+				menor = getP(i) < getP(i-1)
+				maior = getP(i) > getP(i-1)
+
+				nome_igual = getP(i)==getP(i-1)
+				nome_diferente = getP(i)!=getP(i-1)
+
+
+				if(maior)
+					jogaPraCima(i)
+
+
+			}catch(e){}
+
+		}
+	}
+
+
 
 
 	//modela 
@@ -148,6 +170,9 @@ function getP(n){
 		cria(n)
 		
 		organiza1()
+		// organiza1()
+		// organiza1()
+		// organiza1()
 
 		organiza2()
 		organiza2()
@@ -165,6 +190,13 @@ function getP(n){
 		organiza3()
 		organiza3()
 		organiza3()
+
+		organiza4()
+		organiza4()
+		organiza4()
+		organiza4()
+		organiza4()
+		organiza4()
 
 
 		ok.innerHTML = u.outerHTML
@@ -173,11 +205,10 @@ function getP(n){
 	}
 
 
-// go()
+try{
+	d1 = cont.innerHTML.split("\n\n\n")
 
-
-d1 = cont.innerHTML.split("\n\n\n")
-
-for(i of d1){
-	cont2.innerHTML += "<div class='tf-tree example'>"+render(i)+"</div>"
-}
+	for(i of d1){
+		cont2.innerHTML += "<div class='tf-tree example'>"+render(i)+"</div>"
+	}
+}catch(e){}
