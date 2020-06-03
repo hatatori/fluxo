@@ -2,17 +2,17 @@
 <link rel="stylesheet" type="text/css" href="style2.css">
 
 
-<textarea id="txt" style="width: 100%;height: 200;margin-bottom: 10px">Competência e limites x
-	ARP
-		Ten
-			5
-		Cap
-			10
-		Maj
-			15
-		Cel
-			20
-				C 15</textarea>
+<textarea id="txt" style="width: 100%;height: 200;margin-bottom: 10px">a
+	b
+		1
+		2
+		3
+	c
+	d
+		5
+			7
+			8
+		6</textarea>
 
 <div class="tf-tree example" id="ok"></div>
 <!-- <div class="" id="ok"></div> -->
@@ -42,7 +42,7 @@
 
 
 	}
-
+	ok.innerHTML = render(txt.value)
 	txt.onkeyup=function(e){
 		render(this.value)
 		ok.innerHTML = render(txt.value)
