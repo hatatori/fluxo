@@ -133,7 +133,7 @@ function getP(n){
 				numero_avo = parseInt(u.querySelectorAll("li")[i].parentElement.getAttribute("p"))
 				numero = parseInt(u.querySelectorAll("li")[i].getAttribute("p"))
 
-				if(numero <= numero_pai || numero <= numero_avo)
+				if(numero <= numero_pai || numero < numero_avo)
 					u.querySelectorAll("li")[i].parentElement.parentElement.appendChild(u.querySelectorAll("li")[i])
 			}
 		}catch(e){}
