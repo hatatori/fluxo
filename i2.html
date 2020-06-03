@@ -25,11 +25,11 @@ Grau hierárquico
 	Posto
 		Oficiais
 Antiguidade
-	Data
-	Prevalência
-	Classificação
-	Nomeação ou admissão
-	Maior idade
+		Data
+		Prevalência
+		Classificação
+		Nomeação ou admissão
+		Maior idade
 
 
 Deotologia
@@ -46,6 +46,8 @@ Valores éticos
 		Disciplina;Dignidade;Patriotismo;Prifisionalismo
 	VL
 		Verdade;Lealdade
+
+
 Sanções
 	PRAPRECD
 		Permanência
@@ -66,6 +68,8 @@ Advertência
 				Nota corretiva das praças
 	Natureza
 		Leve
+
+
 Repreensão
 	Escrito
 	Publicada em boletim
@@ -212,20 +216,84 @@ Recolhimento Transitório
 
 Procedimento Disciplinar
 	Comunicação Disciplinar
-		SUP→SUB
+		Superior→Subordinado
 			Relatar transgressão do subordinado
 			Formal
 				Clara, con­cisa e precisa
 				Dados capazes de identificar
 					Pessoas ou coisas en­vol­vidas;local;data;hora do fato
 					Circunstâncias;Alegações
+			Prazo
+				5 dias
+			Caso indiciado
+				Terá 3 dias para se manifestar	
+			Conhecendo a manifestação preliminar
+				Autoridade competente elaborará termo acusatório
+						Razões de fato e de direito
+							Para defesa
+								Prazo 5 dias
+			Convencida do cometimento
+				Providenciará o enquadramento
+					Mediante
+						Nota de culpa
+						Despacho nos autos
+			Solução
+				30 dias
+				Prorrogável por + 15 dias
+
+
+Procedimento Disciplinar
+	Representação
+		Subordinado→Superior
+			Irregular;Ofensivo;Injusto;legal
 		Prazo
 			5 dias
-		Caso indiciado
-			Terá 3 dias para se manifestar	
 
 
-</div>
+Procedimento Disciplinar
+	Comunicação
+		Superior→Subordinado
+	Representação
+		Subordinado→Superior
+
+
+Competência e limites
+	Tenente
+		Adv; Rep; Per; Pro 
+			até 5
+	Capitão
+		Adv; Rep; Per; Pro 
+			até 10
+	Major
+		Adv; Rep; Per; Pro
+			até 15
+	Coronel
+		Adv; Rep; Per; Pro 
+			até 20
+			Cus até 15
+	Subcomandante;Subchefe da casa militar
+		Adv; Rep; Per; Cus; Pro
+			Até o limite máx.
+	Controlador Geral
+		Todas as sanções disciplinares
+			Exceto
+				Demissão de oficiais
+	Governador
+		Todas as sações
+
+
+Competência e limites
+	ARP
+		Ten
+			5
+		Cap
+			10
+		Maj
+			15
+		Cel
+			20
+				C 15
+	a</div>
 
 
 
@@ -235,131 +303,15 @@ Procedimento Disciplinar
 <br><br>
 <div class="tf-tree example" id="ok"></div>
 
+<script src='js.js'></script>
+
 <script>
-
-
-	function encontra_ul(a,b){
-	    return a.querySelectorAll("ul")[b]
-	}
-
-	function joga(a,b){
-	    a.appendChild(b)
-	}
-			
-	
-	function go(linha){
-
-		function tab(n){ try { return n.split("\t").length-1}catch(e){return 0} }
-
-		linha = linha.replace(/;/g,"<br>")
-		linha = linha.split("\n")
-
-
-		ar = linha.map(e=>"<li>"+e.replace(/\t/g,"")+"</li>")
-
-		lista = []
-		s = 0
-
-
-		u2 = document.createElement("ul")
-
-		for(i=0;i<linha.length;i++){
-			nome = linha[i].replace(/\t/g,"")
-			lista.push(nome)
-		}
-
-		for(i=0;i<lista.length;i++){
-			if(tab(linha[i+1]) > tab(linha[i]))
-				lista[i] = "<li class='pos' p="+tab(linha[i])+"><span class='tf-nc'>"+lista[i]+"</span><ul pos='"+tab(linha[i+1])+"'></ul></li>"
-			else
-				lista[i] = "<li class='val' p="+tab(linha[i])+"><span class='tf-nc'>"+lista[i]+"</span></li>"
-			
-		}
-
-		u2 = document.createElement("ul")
-		u2.innerHTML = lista.join("")
-
-		function organiza(){
-
-			for(x=0;x<10;x++){
-				ql = u2.querySelectorAll("li")
-				for(i=u2.childElementCount;i>=0;i--){
-					try{
-
-						p1 = u2.children[i-1].getAttribute("p")
-						p2 = u2.children[i].getAttribute("p")
-
-						nome1 = u2.children[i-1].getAttribute("class")
-						nome2 = u2.children[i].getAttribute("class")
-
-						filho = u2.children
-
-						if(u2.children[i].className == "val" && p1 < p2)
-							joga(filho[i-1].querySelector('ul'),filho[i])
-
-					}catch(e){}
-				}
-			}
-		}
-
-		function organiza2(){
-			
-			for(i=u2.childElementCount;i>=0;i--){
-
-				try{
-
-					p1 = u2.children[i-1].getAttribute("p")
-					p2 = u2.children[i].getAttribute("p")
-					
-					nome1 = u2.children[i-1].getAttribute("class")
-					nome2 = u2.children[i].getAttribute("class")
-
-					nin = u2.children[i-1].querySelector('ul').getAttribute("pos")
-
-					filho = u2.children
-
-					if(p2 > p1 && p2 == nin){
-
-
-						joga(filho[i-1].querySelector('ul'),filho[i])
-						
-						filho = u2.children
-
-
-						get1 = parseInt(filho[i].getAttribute("p"))
-						get2 = parseInt(filho[i-1].getAttribute("pos"))
-
-
-						if(get1 == filho[i-1].querySelectorAll('ul')[0].getAttribute("pos")){
-							joga(filho[i-1].querySelectorAll('ul')[0],filho[i])
-							joga(filho[i-1].querySelectorAll('ul')[0],filho[i])
-						}
-					}
-
-				}catch(e){}
-
-			}
-		}
-
-		organiza()
-
-		for(ti=0;ti<20;ti++){
-			organiza2()
-		}
-
-
-		return u2.outerHTML;
-
-
-	}
-
-// go()
 
 
 d1 = cont.innerHTML.split("\n\n\n")
 
 for(i of d1){
-	cont2.innerHTML += "<div class='tf-tree example'>"+go(i)+"</div>"
+	cont2.innerHTML += "<div class='tf-tree example'>"+render(i)+"</div>"
 }
 	
 </script>

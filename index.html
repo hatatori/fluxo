@@ -1,198 +1,238 @@
 <link rel="stylesheet" type="text/css" href="style.css">
-
-<style>
-	*{
-		transition: 0.5s;
-	}
-	body{
-		text-align: center;
-		font-family: ubuntu
-	}
+<link rel="stylesheet" type="text/css" href="style2.css">
 
 
-</style>
+<textarea id="txt" style="width: 100%;height: 200;margin-bottom: 10px">a
+	b
+		c
+		d
+			e
+				f
+				g
+				h
+			g
+				p
+				q
+				r
+				s
+				t
+		i
+			j
+		k
+			l
+		m
+			n
+				n</textarea>
 
-
-<!-- <link href="https://unpkg.com/treeflex/dist/css/treeflex.css" rel="stylesheet"> -->
-
-<textarea style="width: 450;height: 200" id="txt">Procedimento Disciplinar
-	Comunicação Disciplinar
-		SUP→SUB
-			Relatar transgressão do subordinado
-			Formal
-				Clara, con­cisa e precisa
-				Dados capazes de identificar
-					Pessoas ou coisas en­vol­vidas;local;data;hora do fato
-					Circunstâncias;Alegações
-		Prazo
-			5 dias
-		Caso indiciado
-			Terá 3 dias para se manifestar	</textarea>
-<br><br>
 <div class="tf-tree example" id="ok"></div>
+<!-- <div class="" id="ok"></div> -->
 
 <script>
-
-	function encontra_ul(a,b){
-	    return a.querySelectorAll("ul")[b]
+	
+	function jogaPraCima(n){
+		try{
+			u.children[n-1].querySelector('ul').appendChild(u.children[n])
+		}catch(e){}
 	}
 
-	function joga_pra_cima(n){
-	    u2.children[n-1].querySelector('ul').appendChild(u2.children[n])
+	function jogaProUltimo(n){
+		try{
+			ultimo = u.children[n-1]
+
+			ultimo.querySelectorAll('ul')
+
+			len = ultimo.querySelectorAll('ul').length-1
+
+			kz = ultimo.querySelectorAll('ul')[len]
+
+			kz.appendChild(u.children[n])
+		}
+		catch(e){}
 	}
 
-	function joga(a,b){
-	    a.appendChild(b)
+
+	function getName(n){
+	    return u.children[n].getAttribute('name')
 	}
 
-
-	// i = 1
-	// p2 = 2
-	// el = u2.children[i-1].querySelectorAll('ul')[p2-1]
-
-	// el.appendChild(u2.children[i])
-
-
-
-	function go(){
-
-		function tab(n){ try { return n.split("\t").length-1}catch(e){return 0} }
-
-		linha = txt.value.split("\n")
-
-		ordem = txt.value.split("\n").map(e=>e.split(/\t/g).length-1)
-
-		ar = linha.map(e=>"<li>"+e.replace(/\t/g,"")+"</li>")
-
-		lista = []
-		s = 0
-
-
-		u2 = document.createElement("ul")
-
-		for(i=0;i<linha.length;i++){
-			nome = linha[i].replace(/\t/g,"")
-			lista.push(nome)
-		}
-
-		for(i=0;i<lista.length;i++){
-			if(tab(linha[i+1]) > tab(linha[i]))
-				lista[i] = "<li class='pos' p="+tab(linha[i])+"><span class='tf-nc'>"+lista[i]+"</span><ul pos='"+tab(linha[i+1])+"'></ul></li>"
-			else
-				lista[i] = "<li class='val' p="+tab(linha[i])+"><span class='tf-nc'>"+lista[i]+"</span></li>"
-			
-		}
-
-		u2 = document.createElement("ul")
-		u2.innerHTML = lista.join("")
-
-		function organiza(){
-
-			for(x=0;x<10;x++){
-				ql = u2.querySelectorAll("li")
-				for(i=u2.childElementCount;i>=0;i--){
-					try{
-
-						p1 = u2.children[i-1].getAttribute("p")
-						p2 = u2.children[i].getAttribute("p")
-
-						nome1 = u2.children[i-1].getAttribute("class")
-						nome2 = u2.children[i].getAttribute("class")
-
-						filho = u2.children
-
-						if(u2.children[i].className == "val" && p1 < p2)
-							joga(filho[i-1].querySelector('ul'),filho[i])
-
-					}catch(e){}
-				}
-			}
-		}
-
-		function organiza2(){
-			
-			for(i=u2.childElementCount;i>=0;i--){
-
-				try{
-
-					p1 = u2.children[i-1].getAttribute("p")
-					p2 = u2.children[i].getAttribute("p")
-					
-					nome1 = u2.children[i-1].getAttribute("class")
-					nome2 = u2.children[i].getAttribute("class")
-
-					nin = u2.children[i-1].querySelector('ul').getAttribute("pos")
-
-					filho = u2.children
-
-					if(p2 > p1 && p2 == nin){
-
-
-						joga(filho[i-1].querySelector('ul'),filho[i])
-						
-						filho = u2.children
-
-
-						get1 = parseInt(filho[i].getAttribute("p"))
-						get2 = parseInt(filho[i-1].getAttribute("pos"))
-
-
-						if(get1 == filho[i-1].querySelectorAll('ul')[0].getAttribute("pos")){
-							joga(filho[i-1].querySelectorAll('ul')[0],filho[i])
-							joga(filho[i-1].querySelectorAll('ul')[0],filho[i])
-							console.log(i)
-						}
-
-
-					}
-
-				}catch(e){}
-
-			}
-		}
-
-		organiza()
-
-		for(ti=0;ti<10;ti++){
-			organiza2()
-		}
-
-
-			ok.innerHTML = u2.outerHTML
-		}
-
-		go()
-
-	txt.onkeydown=function(e){
-		
-		if(e.key == "Tab"){
-			e.preventDefault()
-			this.value+="\t"
-		}
-		for(vx=0;vx<10;vx++){
-			// organiza()
-			organiza()
-			organiza2()	
-
-		}
+	function getP(n){
+	    return parseInt(u.children[n].getAttribute('p'))
 	}
 
-	txt.onkeyup=function(){
-		go()
-		for(vx=0;vx<1;vx++){
-			// organiza()
-			// organiza()
-			// organiza2()
-		}
-	}
+	// function return_ul(n){
+	// 	return u.querySelectorAll("ul")[n]
+	// }
 
-	// div = document.createElement("div")
-	// div.className = "tf-tree example"
-	// div.appendChild(u2)
-	// document.body.appendChild(div)
-
-	window.onclick=function(e){
-		e.target
+	function return_ul_in(n){
+		return parseInt(u.querySelectorAll("ul")[n].getAttribute('u'))
 	}
 	
+
+	//retorna quantidade de tab na linha n
+	function tab(n){
+		try{
+			return parseInt(linha[n].match(/\t/g).length)
+		}catch(e){
+			return 0
+		}
+	}
+	
+
+	//cria todo o esquema
+	function cria(a){
+		t = ""
+
+		// linha = txt.value.split("\n");
+		linha = a.split("\n")
+
+		u = document.createElement("ul")
+
+		for(i=0;i<linha.length;i++){
+
+			maior = tab(i+1) > tab(i)
+			col = tab(i)
+
+
+			linha[i] = linha[i].replace(/\t/g,"")
+
+
+			if(maior)
+				t += "<li name='a' p="+col+"><span class='tf-nc'>"+linha[i]+"</span><ul u="+col+"></ul></li>"
+			else
+				t += "<li name='c' p="+col+"><span class='tf-nc'>"+linha[i]+"</span></li>"
+		}
+
+		u.innerHTML = t
+	}
+	
+
+	// ajusta o esquema
+
+	function organiza1(){
+		for( i = linha.length-1 ;  i >= 0 ;i--){
+			try{
+
+				igual = getP(i) == getP(i-1)
+				menor = getP(i) < getP(i-1)
+				maior = getP(i) > getP(i-1)
+
+				nome_igual = getP(i)==getP(i-1)
+				nome_diferente = getP(i)!=getP(i-1)
+
+
+				if(maior && nome_diferente && return_ul_in(i-1) < getP(i))
+					jogaPraCima(i)
+
+
+			}catch(e){}
+
+		}
+	}
+
+	function organiza2(){
+		for( i = linha.length-1 ;  i >= 0 ;i--){
+			try{
+
+				igual = getP(i) == getP(i-1)
+				menor = getP(i) < getP(i-1)
+				maior = getP(i) > getP(i-1)
+
+				nome_igual = getP(i)==getP(i-1)
+				nome_diferente = getP(i)!=getP(i-1)
+
+
+				if(maior && nome_diferente && return_ul_in(i-1) < getP(i)){
+					jogaProUltimo(i)
+				}
+
+
+			}catch(e){}
+
+		}
+	}
+
+	function organiza3(){
+		
+		li = u.querySelectorAll("li")
+
+		try{
+
+		for( i = li.length-1 ;  i >= 0 ;i--){	
+
+			numero_pai = parseInt(u.querySelectorAll("li")[i].parentElement.getAttribute("u"))
+			numero_avo = parseInt(u.querySelectorAll("li")[i].parentElement.getAttribute("p"))
+			numero = parseInt(u.querySelectorAll("li")[i].getAttribute("p"))
+
+			if(numero <= numero_pai || numero <= numero_avo)
+				u.querySelectorAll("li")[i].parentElement.parentElement.appendChild(u.querySelectorAll("li")[i])
+		}
+	}catch(e){}
+
+}
+
+
+	//modela 
+	
+	function render(n){
+
+		cria(n)
+		
+		organiza1()
+
+		organiza2()
+		organiza2()
+		organiza2()
+		organiza2()
+		organiza2()
+		organiza2()
+		organiza2()
+
+		organiza3()
+		organiza3()
+		organiza3()
+		organiza3()
+		organiza3()
+		organiza3()
+		organiza3()
+		organiza3()
+
+
+		ok.innerHTML = u.outerHTML
+
+		return u.outerHTML
+	}
+
+
+	render(txt.value)
+
+	txt.onkeydown=function(e){
+
+		console.log(e.key)
+
+		if(e.key == "Tab"){
+
+			start = this.selectionStart;
+    		end = this.selectionEnd;
+
+    		this.value = this.value.substring(0, start)+"\t"+this.value.substring(end)
+
+    		this.selectionStart = this.selectionEnd = start + 1;
+			e.preventDefault()
+		}
+
+
+	}
+
+	txt.onkeyup=function(e){
+		// if(e.key == 9){
+		// 	alert('ok')
+		// }
+		// e.preventDefault()
+		// if (e.keyCode == 9) {alert('ok')}
+
+		// console.log(this.value)
+		render(this.value)
+	}
+
+
 </script>
