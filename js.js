@@ -174,29 +174,13 @@ function getP(n){
 		// organiza1()
 		// organiza1()
 
-		organiza2()
-		organiza2()
-		organiza2()
-		organiza2()
-		organiza2()
-		organiza2()
-		organiza2()
+		
 
-		organiza3()
-		organiza3()
-		organiza3()
-		organiza3()
-		organiza3()
-		organiza3()
-		organiza3()
-		organiza3()
+		for(z=0;z<13;z++){ organiza2() }
+		for(z=0;z<13;z++){ organiza3() }
+		for(z=0;z<13;z++){ organiza4() }
 
-		organiza4()
-		organiza4()
-		organiza4()
-		organiza4()
-		organiza4()
-		organiza4()
+
 
 
 		// ok.innerHTML = u.outerHTML
