@@ -121,13 +121,31 @@ function getP(n){
 		}
 	}
 
+	// function organiza3(){
+		
+	// 	li = u.querySelectorAll("li")
+
+	// 	try{
+
+	// 		for( i = li.length-1 ;  i >= 0 ;i--){	
+
+	// 			numero_pai = parseInt(u.querySelectorAll("li")[i].parentElement.getAttribute("u"))
+	// 			numero_avo = parseInt(u.querySelectorAll("li")[i].parentElement.getAttribute("p"))
+	// 			numero = parseInt(u.querySelectorAll("li")[i].getAttribute("p"))
+
+	// 			if(numero <= numero_pai || numero < numero_avo)
+	// 				u.querySelectorAll("li")[i].parentElement.parentElement.appendChild(u.querySelectorAll("li")[i])
+	// 		}
+	// 	}catch(e){}
+	// }
+
 	function organiza3(){
 		
 		li = u.querySelectorAll("li")
 
 		try{
 
-			for( i = li.length-1 ;  i >= 0 ;i--){	
+			for( i=0 ;  i<li.length ;i++){	
 
 				numero_pai = parseInt(u.querySelectorAll("li")[i].parentElement.getAttribute("u"))
 				numero_avo = parseInt(u.querySelectorAll("li")[i].parentElement.getAttribute("p"))
@@ -176,9 +194,9 @@ function getP(n){
 
 		
 
-		for(z=0;z<13;z++){ organiza2() }
-		for(z=0;z<13;z++){ organiza3() }
-		for(z=0;z<13;z++){ organiza4() }
+		for(z=0;z<22;z++){ organiza2() }
+		for(z=0;z<22;z++){ organiza3() }
+		for(z=0;z<2;z++){ organiza4() }
 
 
 
