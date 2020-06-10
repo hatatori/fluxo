@@ -90,9 +90,10 @@ function getP(n){
 
 			linha[i] = linha[i].replace(/\t/g,"")
 
-			linha[i] = linha[i].split("<br>").map(e=>transformAlert(e)).join("<br>")
+			linha[i] = linha[i].replace(/\[\[.+?\]\]/g,e=>transformAlert(e))
 
-			console.log(linha)
+			// linha[i] = linha[i].split("<br>").map(e=>transformAlert(e)).join("<br>")
+
 
 			if(maior)
 				t += "<li name='a' p="+col+"><span class='tf-nc'>"+linha[i]+"</span><ul u="+col+"></ul></li>"
