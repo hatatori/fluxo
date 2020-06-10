@@ -1,3 +1,29 @@
+function transformAlert(texto){
+	// texto = "[[subjetiva#eita]]"
+
+
+	if(texto.match(/\[\[/g)){
+
+		msg_alert = texto.slice(texto.indexOf("#")+1,texto.indexOf("]]"))
+		msg = texto.slice(texto.indexOf("[[")+2,texto.indexOf("#"))
+
+		texto = "<span class='blue' onclick=\"alert('"+msg_alert+"')\">"+msg+"</span>"
+
+		// texto = texto.replace(/#.+?]/g,"")+"]"
+
+		// texto = texto
+		// .replace("[[","<span class='blue' onclick=\"alert('"+msg_alert+"')\">")
+		// .replace("]]","</span>")
+
+		return texto
+
+	}else{
+
+		return texto
+
+	}
+}
+
 function jogaPraCima(n){
 	try{
 		u.children[n-1].querySelector('ul').appendChild(u.children[n])
@@ -51,7 +77,6 @@ function getP(n){
 	function cria(a){
 		t = ""
 
-		// linha = txt.value.split("\n");
 		a = a.replace(/;/g,"<br>")
 		linha = a.split("\n")
 
@@ -65,6 +90,9 @@ function getP(n){
 
 			linha[i] = linha[i].replace(/\t/g,"")
 
+			linha[i] = linha[i].split("<br>").map(e=>transformAlert(e)).join("<br>")
+
+			console.log(linha)
 
 			if(maior)
 				t += "<li name='a' p="+col+"><span class='tf-nc'>"+linha[i]+"</span><ul u="+col+"></ul></li>"
