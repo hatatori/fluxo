@@ -7,7 +7,13 @@ function transformAlert(texto){
 		msg_alert = texto.slice(texto.indexOf("#")+1,texto.indexOf("]]"))
 		msg = texto.slice(texto.indexOf("[[")+2,texto.indexOf("#"))
 
-		texto = "<span class='blue' onclick=\"alert('"+msg_alert+"')\">"+msg+"</span>"
+		// msg_alert = msg_alert.replace(/\\n/g,"<br><br>")
+		msg_alert = msg_alert.replace(/<br>/g,"<br><br><br>")
+
+		msg_alert = msg_alert.replace(/\{/g,"<u><b>").replace(/\}/g,"</b></u>")		
+
+
+		texto = "<span class='blue' onclick=\"alertar('"+msg_alert+"',400,200)\">"+msg+"</span>"
 
 		// texto = texto.replace(/#.+?]/g,"")+"]"
 
@@ -76,8 +82,11 @@ function getP(n){
 	//cria todo o esquema
 	function cria(a){
 		t = ""
-
+		
 		a = a.replace(/;/g,"<br>")
+		// a = a.replace(/\|\|/g,"<br>")
+		
+
 		linha = a.split("\n")
 
 		u = document.createElement("ul")

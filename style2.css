@@ -3,13 +3,17 @@
 		tab-size: 5
 	}
 	body{
-		text-align: center;
+		/*text-align: center;*/
 		font-family: ubuntu;
 	}
 
 	.invisible{display: none}
 
 	/*img{width: 90%}*/
+
+	#cont2{
+		text-align: center;
+	}
 
 	#cont2 div{
 		padding: 30 0;
