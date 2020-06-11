@@ -18,32 +18,35 @@
 	function ngMostrar(a,b){
 		tempo = 2
 
+		if(a){
+			alertIn.style.Width=a+900
+			alertIn.style.Height=b
+		}
+
 		alertIn.style.overflowY="hidden"
-		alertOut.style.transition=tempo/10+"s"
+		alertOut.style.transition=0.3+"s"
 
 		alertIn.style.maxHeight=0
 		alertOut.style.display="flex"
 
 		setTimeout(()=>{		
 			alertOut.style.opacity=1
-
-		},tempo*2)
+		},0)
 
 		setTimeout(()=>{		
-			alertIn.style.transition=tempo-1+"s"
+			alertIn.style.transition=0.3+"s"
 
 			if(typeof(a) == 'undefined' && typeof(b) == 'undefined'){
 				alertIn.style.maxHeight=350
 			}
 			else{
-				alertIn.style.transition=1+"s"
-				alertIn.style.maxWidth=a
+				alertIn.style.transition=0+"s"
+				alertIn.style.width=a
 				alertIn.style.maxHeight=b
 			}
 		})
 
-		setTimeout(()=>{alertIn.style.overflowY="auto"},700)
-
+		setTimeout(()=>{alertIn.style.overflowY="auto"},0)
 
 	}
 
@@ -66,10 +69,10 @@
 		ngMostrar(a,b)
 
 		// if()
-			// alertIn.style.maxWidth = a
+			// alertIn.style.Width = 1000
 			// alertIn.style.maxHeight = b
 
 
-	}
+		}
 
-	alertIn.onclick=e=>{e.stopPropagation()}
+		alertIn.onclick=e=>{e.stopPropagation()}
