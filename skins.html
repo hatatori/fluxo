@@ -1,62 +1,122 @@
 <style>
-*{
-	transition: 0.5s
-}
-body{
-	text-align: center;
-	background-color: 000
-}
+	*{
+		padding: 0;
+		margin: 0;
+		outline: none;
+		border: none;
+	}
+	body{
+		text-align: center;
+		width: 100%
+	}
+	img{
+		/*margin-right: 1;*/
+		/*margin-bottom: 1*/
+	}
 
-img{
-	width: 50
-}
+	video{
+		width: 100%;
+		/*display: inline-table;*/
+	}
 
-input{
-	padding: 10;
-	margin: 10
-}
+	input{
+		background-color: #ddd;
+
+		padding: 20
+	}
+
+	.vd{
+		width: 50%;
+		display: inline-block;
+	}
+
+	#passa{padding: 10;background-color: orange;color: white}
 </style>
 
-<input class="pesquisa">
-
-
-<div class="lista" id="ok"></div>
+<input type="" name="" id="inp">
+<br>
+<button id="passa">1</button>
+<br>
+<div id="ok"></div>
 
 
 <script>
 
-nomes = "kayle-pentakill.png, zoe-classic.png, orianna-victorious.png, aatrox-blood-moon-prestige-edition.png, nunu-amp-willump-papercraft.png, ivern-dunkmaster.png, jarvan-iv-hextech.png, alistar-classic.png, annie-classic.png, ashe-classic.png, fiddlesticks-classic.png, jax-classic.png, kayle-classic.png, master-yi-classic.png, morgana-classic.png, nunu-amp-willump-classic.png, ryze-classic.png, sion-classic.png, sivir-classic.png, soraka-classic.png, teemo-classic.png, tristana-classic.png, twisted-fate-classic.png, warwick-classic.png, singed-classic.png, zilean-classic.png, evelynn-classic.png, tryndamere-classic.png, twitch-classic.png, karthus-classic.png, amumu-classic.png, chogath-classic.png, anivia-classic.png, rammus-classic.png, alistar-black.png, ryze-human.png, veigar-classic.png, kassadin-classic.png, gangplank-classic.png, taric-classic.png, blitzcrank-classic.png, dr-mundo-classic.png, janna-classic.png, malphite-classic.png, twisted-fate-pax.png, corki-classic.png, katarina-classic.png, nasus-classic.png, heimerdinger-classic.png, shaco-classic.png, rammus-king.png, annie-goth.png, kayle-silver.png, ashe-freljord.png, blitzcrank-rusty.png, chogath-nightmare.png, evelynn-shadow.png, katarina-mercenary.png, nunu-amp-willump-sasquatch.png, taric-emerald.png, twitch-kingpin.png, udyr-classic.png, tristana-riot-girl.png, warwick-grey.png, nidalee-snow-bunny.png, nunu-amp-willump-workshop.png, teemo-happy-elf.png, dr-mundo-toxic-dr.png, master-yi-assassin.png, nidalee-classic.png, teemo-recon.png, veigar-white-mage.png, zilean-old-saint.png, tristana-earnest-elf.png, corki-ufo.png, alistar-golden.png, karthus-phantom.png, poppy-classic.png, teemo-badger.png, amumu-pharaoh.png, gragas-classic.png, pantheon-classic.png, pantheon-myrmidon.png, poppy-noxus.png, twisted-fate-jack-of-hearts.png, amumu-vancouver.png, anivia-team-spirit.png, corki-ice-toboggan.png, fiddlesticks-union-jack.png, jax-the-mighty.png, kassadin-festival.png, twitch-whistler-village.png, veigar-curling.png, jax-vandal.png, mordekaiser-classic.png, mordekaiser-dragon-knight.png, mordekaiser-infernal.png, nidalee-leopard.png, ezreal-classic.png, ezreal-nottingham.png, fiddlesticks-spectral.png, gangplank-spooky.png, malphite-shamrock.png, tryndamere-highland.png, corki-red-baron.png, dr-mundo-mr.png, shen-classic.png, shen-yellow-jacket.png, shen-frozen.png, warwick-urf-the-manatee.png, ashe-sherwood-forest.png, kennen-classic.png, kennen-deadly.png, kennen-swamp-master.png, pantheon-ruthless.png, taric-armor-of-the-fifth-age.png, annie-red-riding.png, garen-classic.png, garen-sanguine.png, garen-desert-trooper.png, sivir-warrior-princess.png, warwick-big-bad.png, anivia-bird-of-prey.png, gragas-scuba.png, akali-classic.png, akali-infernal.png, akali-stinger.png, alistar-matador.png, chogath-gentleman.png, evelynn-masquerade.png, rammus-chrome.png, twisted-fate-the-magnificent.png, kayle-viridian.png, malzahar-classic.png, malzahar-shadow-prince.png, malzahar-vizier.png, morgana-exiled.png, sion-hextech.png, master-yi-chosen.png, soraka-dryad.png, tristana-firefighter.png, jax-angler.png, olaf-classic.png, olaf-forsaken.png, olaf-glacial.png, shaco-mad-hatter.png, sivir-spectacular.png, blitzcrank-goalkeeper.png, ezreal-striker.png, kogmaw-classic.png, kogmaw-caterpillar.png, kogmaw-sonoran.png, nidalee-french-maid.png, akali-all-star.png, katarina-red-card.png, gangplank-minuteman.png, karthus-statue-of.png, ryze-uncle.png, twitch-medieval.png, janna-tempest.png, kayle-transcended.png, xin-zhao-classic.png, xin-zhao-commando.png, xin-zhao-imperial.png, heimerdinger-alien-invader.png, nasus-galactic.png, rammus-molten.png, ashe-woad.png, ezreal-frosted.png, udyr-black-belt.png, corki-hot-rod.png, vladimir-classic.png, vladimir-count.png, vladimir-marquis.png, zilean-groovy.png, amumu-emumu.png, gragas-hillbilly.png, kassadin-deep-one.png, fiddlesticks-bandito.png, galio-classic.png, galio-enchanted.png, galio-hextech.png, nunu-amp-willump-grungy.png, tristana-guerilla.png, annie-annie-in-wonderland.png, singed-hextech.png, warwick-tundra-hunter.png, singed-riot-squad.png, anivia-noxus-hunter.png, poppy-blacksmith.png, urgot-classic.png, urgot-giant-enemy-crabgot.png, urgot-butcher.png, blitzcrank-boom-boom.png, katarina-bilgewater.png, ryze-triumphant.png, jax-pax.png, morgana-sinful-succulence.png, garen-commando.png, miss-fortune-classic.png, miss-fortune-cowgirl.png, miss-fortune-waterloo.png, veigar-veigar-greybeard.png, zilean-shurima-desert.png, dr-mundo-corporate.png, master-yi-ionia.png, shaco-royal.png, ashe-queen.png, mordekaiser-pentakill.png, sona-classic.png, sona-muse.png, sona-pentakill.png, tryndamere-king.png, karthus-grim-reaper.png, kassadin-pre-void.png, sion-barbarian.png, evelynn-tango.png, ryze-professor.png, swain-classic.png, swain-northern-front.png, swain-bilgewater.png, twisted-fate-tango.png, ezreal-explorer.png, twitch-gangster.png, dr-mundo-mundo-mundo.png, katarina-kitty-cat.png, poppy-lollipoppy.png, ryze-zombie.png, vladimir-nosferatu.png, fiddlesticks-pumpkinhead.png, lux-classic.png, lux-spellthief.png, lux-sorceress.png, teemo-astronaut.png, leblanc-classic.png, leblanc-prestigious.png, leblanc-wicked.png, nasus-pharaoh.png, pantheon-perseus.png, soraka-divine.png, janna-hextech.png, kennen-karate.png, malphite-coral-reef.png, irelia-classic.png, irelia-nightblade.png, irelia-aviator.png, kogmaw-monarch.png, miss-fortune-secret-agent.png, warwick-feral.png, heimerdinger-piltover-customs.png, rammus-freljord.png, xin-zhao-viscero.png, morgana-blade-mistress.png, olaf-brolaf.png, trundle-classic.png, trundle-lil-slugger.png, trundle-junkyard.png, singed-surfer.png, udyr-primal.png, amumu-re-gifted.png, cassiopeia-classic.png, cassiopeia-desperada.png, cassiopeia-siren.png, gragas-santa.png, kogmaw-reindeer.png, miss-fortune-candy-cane.png, poppy-ragdoll.png, shaco-nutcracko.png, sona-silent-night.png, akali-nurse.png, caitlyn-classic.png, caitlyn-resistance.png, caitlyn-sheriff.png, shen-surgeon.png, gangplank-sailor.png, nidalee-pharaoh.png, galio-commando.png, garen-dreadknight.png, renekton-classic.png, renekton-galactic.png, renekton-outback.png, sion-lumberjack.png, vladimir-vandal.png, karma-classic.png, karma-sakura.png, karma-sun-goddess.png, kogmaw-lion-dance.png, malzahar-djinn.png, amumu-almost-prom-king.png, annie-prom-queen.png, alistar-longhorn.png, maokai-classic.png, maokai-totemic.png, maokai-charred.png, sivir-huntress.png, twitch-vandal.png, katarina-high-command.png, anivia-hextech.png, chogath-loch-ness.png, jarvan-iv-classic.png, jarvan-iv-commando.png, jarvan-iv-dragon-slayer.png, blitzcrank-piltover.png, master-yi-samurai-yi.png, nocturne-frozen-terror.png, nocturne-void.png, poppy-battle-regalia.png, nocturne-classic.png, veigar-leprechaun.png, malphite-marble.png, sivir-bandit.png, kennen-kennen-m-d.png, shaco-workshop.png, warwick-firefang.png, lee-sin-classic.png, lee-sin-traditional.png, lee-sin-acolyte.png, corki-urfrider.png, brand-classic.png, brand-apocalyptic.png, brand-vandal.png, gragas-gragas-esq.png, zilean-time-machine.png, kayle-battleborn.png, teemo-cottontail.png, nasus-dreadknight.png, fiddlesticks-fiddle-me-timbers.png, rumble-classic.png, rumble-rumble-in-the-jungle.png, rumble-bilgerat.png, nunu-amp-willump-bot.png, ryze-tribal.png, caitlyn-safari.png, jax-jaximus.png, mordekaiser-lord.png, vayne-classic.png, vayne-vindicator.png, vayne-aristocratic.png, rammus-ninja.png, twisted-fate-high-noon.png, annie-frostfire.png, miss-fortune-road-warrior.png, orianna-classic.png, orianna-gothic.png, orianna-sewn-chaos.png, shen-blood-moon.png, nocturne-ravager.png, dr-mundo-executioner.png, lux-commando.png, yorick-classic.png, yorick-undertaker.png, yorick-pentakill.png, tryndamere-viking.png, veigar-baron-von.png, akali-blood-moon.png, leona-classic.png, kassadin-harbinger.png, leona-defender.png, leona-valkyrie.png, amumu-little-knight.png, sion-warmonger.png, jarvan-iv-darkforge.png, renekton-bloodfury.png, wukong-classic.png, wukong-volcanic.png, wukong-general.png, tristana-buccaneer.png, pantheon-full-metal.png, tryndamere-demonblade.png, skarner-classic.png, skarner-sandscourge.png, skarner-earthrune.png, taric-bloodstone.png, garen-rugged.png, malphite-obsidian.png, jarvan-iv-victorious.png, kayle-judgement.png, nunu-amp-willump-demolisher.png, talon-classic.png, talon-renegade.png, talon-crimson-elite.png, vayne-dragonslayer.png, sivir-pax.png, singed-mad-scientist.png, karthus-pentakill.png, annie-reverse.png, riven-classic.png, riven-crimson-elite.png, riven-redeemed.png, kogmaw-deep-sea.png, malzahar-overlord.png, alistar-unchained.png, xin-zhao-winged-hussar.png, brand-cryocore.png, caitlyn-officer.png, irelia-infiltrator.png, xerath-classic.png, xerath-battlecast.png, xerath-runeborn.png, teemo-super.png, annie-franken-tibbers.png, blitzcrank-definitely-not.png, graves-classic.png, graves-hired-gun.png, graves-jailbreak.png, nidalee-bewitching.png, nocturne-haunting.png, fiddlesticks-surprise-party.png, chogath-jurassic.png, miss-fortune-mafia.png, shyvana-classic.png, shyvana-boneclaw.png, shyvana-ironscale.png, shaco-asylum.png, ashe-amethyst.png, fizz-classic.png, fizz-tundra.png, jax-temple.png, fizz-atlantean.png, twisted-fate-musketeer.png, vladimir-blood-lord.png, akali-silverfang.png, lux-imperial.png, volibear-classic.png, volibear-thunder-lord.png, volibear-northern-storm.png, janna-frost-queen.png, warwick-hyena.png, gangplank-toy-soldier.png, heimerdinger-snowmerdinger.png, leblanc-mistletoe.png, maokai-festive.png, ahri-classic.png, ahri-dynasty.png, ahri-midnight.png, caitlyn-arctic-warfare.png, kennen-arctic-ops.png, viktor-classic.png, viktor-full-machine.png, viktor-prototype.png, katarina-sandstorm.png, veigar-superb-villain.png, lee-sin-dragon-fist.png, sona-guqin.png, talon-dragonblade.png, wukong-jade-dragon.png, sejuani-classic.png, sejuani-sabretusk.png, sejuani-darkrider.png, poppy-scarlet-hammer.png, ziggs-classic.png, ziggs-mad-scientist.png, ziggs-major.png, master-yi-headhunter.png, leona-iron-solari.png, nautilus-classic.png, nautilus-abyssal.png, nautilus-subterranean.png, vayne-heartseeker.png, ryze-dark-crystal.png, fiora-classic.png, fiora-royal-guard.png, fiora-nightraven.png, orianna-bladecraft.png, gragas-vandal.png, urgot-battlecast.png, lulu-classic.png, lulu-bittersweet.png, lulu-wicked.png, kogmaw-jurassic.png, fizz-fisherman.png, graves-mafia.png, riven-battle-bunny.png, hecarim-classic.png, hecarim-blood-knight.png, hecarim-reaper.png, shen-warlord.png, galio-gatekeeper.png, irelia-frostblade.png, renekton-rune-wars.png, varus-classic.png, varus-blight-crystal.png, darius-classic.png, darius-lord.png, morgana-blackthorn.png, swain-tyrant.png, amumu-sad-robot.png, shyvana-darkflame.png, pantheon-glaive-warrior.png, draven-classic.png, draven-soul-reaver.png, heimerdinger-blast-zone.png, ezreal-pulsefire.png, jayce-classic.png, jayce-full-metal.png, singed-augmented.png, teemo-panda.png, ahri-foxfire.png, malphite-glacial.png, alistar-infernal.png, xerath-scorched-earth.png, cassiopeia-mythic.png, lee-sin-muay-thai.png, zyra-classic.png, zyra-wildfire.png, dr-mundo-rageborn.png, diana-dark-valkyrie.png, diana-classic.png, graves-riot.png, nasus-riot-k-9.png, rammus-full-metal.png, rengar-classic.png, rengar-headhunter.png, sona-arcade.png, nautilus-astro.png, ziggs-pool-party.png, gangplank-special-forces.png, syndra-classic.png, syndra-justicar.png, jax-nemesis.png, gragas-oktoberfest.png, khazix-classic.png, khazix-mecha.png, tryndamere-sultan.png, olaf-pentakill.png, chogath-battlecast-prime.png, riven-championship.png, tristana-rocket-girl.png, brand-zombie.png, elise-classic.png, elise-death-blossom.png, fiora-headmistress.png, hecarim-headless.png, maokai-haunted.png, ryze-pirate.png, twisted-fate-underworld.png, janna-victorious.png, darius-bioforge.png, lulu-dragon-trainer.png, zed-classic.png, zed-shockblade.png, varus-arclight.png, nocturne-eternum.png, nami-classic.png, nami-koi.png, fiddlesticks-dark-candy.png, katarina-slay-belle.png, veigar-bad-santa.png, ziggs-snow-day.png, vi-classic.png, vi-neon-strike.png, shaco-masked.png, kayle-aether-wing.png, thresh-classic.png, thresh-deep-terror.png, lux-steel-legion.png, garen-steel-legion.png, annie-panda.png, cassiopeia-jade-fang.png, corki-dragonwing.png, jarvan-iv-warring-kingdoms.png, xin-zhao-warring-kingdoms.png, jayce-debonair.png, quinn-classic.png, quinn-phoenix.png, blitzcrank-iblitzcrank.png, soraka-celestine.png, nidalee-headhunter.png, draven-gladiator.png, zac-special-weapon.png, zac-classic.png, karma-traditional.png, sejuani-traditional.png, trundle-traditional.png, lissandra-classic.png, lissandra-bloodstone.png, anivia-blackfrost.png, shyvana-ice-drake.png, volibear-runeguard.png, dr-mundo-tpa.png, ezreal-tpa.png, nunu-amp-willump-tpa.png, orianna-tpa.png, shen-tpa.png, aatrox-classic.png, aatrox-justicar.png, morgana-ghost-bride.png, darius-woad-king.png, udyr-spirit-guard.png, sejuani-bear-cavalry.png, blitzcrank-riot.png, hecarim-arcade.png, lucian-classic.png, lucian-hired-gun.png, janna-forecast.png, graves-pool-party.png, lee-sin-pool-party.png, leona-pool-party.png, renekton-pool-party.png, viktor-creator.png, thresh-championship.png, jinx-classic.png, jinx-mafia.png, vi-officer.png, zyra-haunted.png, elise-victorious.png, gangplank-sultan.png, nasus-infernal.png, ahri-popstar.png, yasuo-classic.png, yasuo-high-noon.png, lulu-winter-wonder.png, singed-snow-day.png, sivir-snowstorm.png, diana-lunar-goddess.png, riven-dragonblade.png, tryndamere-warring-kingdoms.png, renekton-scorched-earth.png, ashe-heartseeker.png, velkoz-battlecast.png, varus-arctic-ops.png, velkoz-classic.png, rumble-super-galaxy.png, fizz-void.png, syndra-atlantean.png, vayne-skt.png, lee-sin-skt.png, jax-skt.png, zyra-skt.png, zed-skt.png, braum-classic.png, braum-dragonslayer.png, pantheon-dragonslayer.png, rengar-night-hunter.png, lissandra-blade-queen.png, nami-river-spirit.png, quinn-woad-scout.png, alistar-sweeper.png, maokai-goalkeeper.png, lucian-striker.png, twisted-fate-red-card.png, gragas-superfan.png, draven-primetime.png, vladimir-soulstealer.png, heimerdinger-hazmat.png, aatrox-mecha.png, malphite-mecha.png, ezreal-debonair.png, vi-debonair.png, gnar-classic.png, miss-fortune-arcade.png, gnar-dino.png, kayle-riot.png, veigar-final-boss.png, yasuo-project.png, caitlyn-headhunter.png, khazix-guardian-of-the-sands.png, azir-classic.png, azir-galactic.png, karthus-fnatic.png, jarvan-iv-fnatic.png, janna-fnatic.png, corki-fnatic.png, gragas-fnatic.png, karma-order-of-the-lotus.png, darius-dunkmaster.png, shyvana-championship.png, leblanc-ravenborn.png, wukong-underworld.png, soraka-reaper.png, morgana-victorious.png, kalista-classic.png, kalista-blood-moon.png, skarner-battlecast-alpha.png, kogmaw-battlecast.png, evelynn-safecracker.png, twitch-pickpocket.png, trundle-constable.png, volibear-captain.png, reksai-classic.png, reksai-eternum.png, malzahar-snow-day.png, orianna-winter-wonder.png, sejuani-poro-rider.png, elise-blood-moon.png, thresh-blood-moon.png, ahri-challenger.png, braum-el-tigre.png, velkoz-arclight.png, jinx-firecracker.png, nidalee-warring-kingdoms.png, katarina-warring-kingdoms.png, annie-sweetheart.png, varus-heartseeker.png, warwick-marauder.png, ashe-marauder.png, nautilus-warden.png, sivir-warden.png, sona-dj.png, bard-classic.png, bard-elderwood.png, xin-zhao-secret-agent.png, akali-headhunter.png, udyr-definitely-not.png, amumu-surprise-party.png, nasus-archduke.png, soraka-order-of-the-banana.png, nami-urf-the-manatee.png, teemo-omega-squad.png, galio-debonair.png, vayne-arclight.png, rammus-guardian-of-the-sands.png, skarner-guardian-of-the-sands.png, xerath-guardian-of-the-sands.png, fiddlesticks-risen.png, jayce-forsaken.png, ziggs-master-arcanist.png, zilean-blood-moon.png, rengar-ssw.png, singed-ssw.png, talon-ssw.png, thresh-ssw.png, twitch-ssw.png, lux-star-guardian.png, ezreal-ace-of-spades.png, mordekaiser-king-of-clubs.png, shaco-wild-card.png, syndra-queen-of-diamonds.png, ekko-classic.png, ekko-sandstorm.png, lee-sin-knockout.png, irelia-order-of-the-lotus.png, tryndamere-nightmare.png, anivia-prehistoric.png, chogath-prehistoric.png, renekton-prehistoric.png, dr-mundo-pool-party.png, draven-pool-party.png, lulu-pool-party.png, reksai-pool-party.png, zac-pool-party.png, tahm-kench-classic.png, tahm-kench-master-chef.png, gnar-gentleman.png, graves-cutthroat.png, twisted-fate-cutpurse.png, aatrox-sea-hunter.png, garen-rogue-admiral.png, quinn-corsair.png, miss-fortune-captain.png, fizz-cottontail.png, gangplank-captain.png, riven-arcade.png, blitzcrank-battle-boss.png, ahri-academy.png, darius-academy.png, ekko-academy.png, vladimir-academy.png, fiora-project.png, leona-project.png, lucian-project.png, master-yi-project.png, zed-project.png, kalista-championship.png, alistar-marauder.png, olaf-marauder.png, jax-warden.png, karma-warden.png, malphite-ironside.png, kindred-classic.png, kindred-shadowfire.png, kassadin-cosmic-reaver.png, vi-demon.png, brand-spirit-fire.png, jinx-slayer.png, nunu-amp-willump-zombie.png, pantheon-slayer.png, sivir-victorious.png, illaoi-classic.png, illaoi-void-bringer.png, hecarim-elderwood.png, azir-gravelord.png, tristana-dragon-trainer.png, braum-lionheart.png, gragas-caskbreaker.png, ryze-whitebeard.png, varus-swiftbolt.png, bard-snow-day.png, gnar-snow-day.png, syndra-snow-day.png, nidalee-challenger.png, caitlyn-lunar-wraith.png, morgana-lunar-wraith.png, wukong-radiant.png, jhin-classic.png, jhin-high-noon.png, draven-beast-hunter.png, sejuani-beast-hunter.png, tryndamere-beast-hunter.png, orianna-heartseeker.png, sona-sweetheart.png, kennen-blood-moon.png, yasuo-blood-moon.png, leblanc-elderwood.png, annie-hextech.png, khazix-death-blossom.png, aurelion-sol-classic.png, aurelion-sol-ashen-lord.png, draven-draven.png, tahm-kench-urf.png, velkoz-definitely-not.png, maokai-meowkai.png, soraka-program.png, lissandra-program.png, sion-mecha-zero.png, diana-infernal.png, kayle-iron-inquisitor.png, nocturne-cursed-revenant.png, singed-black-scourge.png, taliyah-classic.png, taliyah-freljord.png, fizz-super-galaxy.png, kindred-super-galaxy.png, shyvana-super-galaxy.png, gnar-el-leon.png, dr-mundo-el-macho.png, volibear-el-rayo.png, thresh-dark-star.png, varus-dark-star.png, vayne-soulstealer.png, nami-deep-sea.png, fiora-pool-party.png, miss-fortune-pool-party.png, taric-pool-party.png, ashe-project.png, ekko-project.png, katarina-project.png, kled-classic.png, kled-sir.png, alistar-skt.png, azir-skt.png, elise-skt.png, kalista-skt.png, renekton-skt.png, ryze-skt.png, ahri-arcade.png, corki-arcade.png, ezreal-arcade.png, akali-sashimi.png, pantheon-baker.png, leona-barbecue.png, olaf-butcher.png, riven-championship.png, zed-championship.png, ivern-classic.png, ivern-candy-king.png, janna-star-guardian.png, jinx-star-guardian.png, lulu-star-guardian.png, poppy-star-guardian.png, maokai-victorious.png, teemo-little-devil.png, tristana-bewitching.png, morgana-bewitching.png, hecarim-worldbreaker.png, nasus-worldbreaker.png, trundle-worldbreaker.png, nautilus-worldbreaker.png, karthus-lightsbane.png, jayce-brighthammer.png, bard-bard.png, sejuani-dawnchaser.png, lux-elementalist.png, camille-classic.png, camille-program.png, braum-santa.png, graves-snow-day.png, karma-winter-wonder.png, gangplank-dreadnova.png, azir-warring-kingdoms.png, garen-warring-kingdoms.png, vi-warring-kingdoms.png, lucian-heartseeker.png, quinn-heartseeker.png, diana-blood-moon.png, twisted-fate-blood-moon.png, jhin-blood-moon.png, talon-blood-moon.png, anivia-festival-queen.png, xin-zhao-dragonslayer.png, zyra-dragon-sorceress.png, alistar-moo-cow.png, kennen-super.png, kogmaw-pugmaw.png, renekton-renektoy.png, khazix-dark-star.png, orianna-dark-star.png, lee-sin-god-fist.png, darius-dreadnova.png, xayah-classic.png, xayah-cosmic-dusk.png, rakan-classic.png, rakan-cosmic-dawn.png, karma-conqueror.png, master-yi-cosmic-blade.png, caitlyn-pulsefire.png, tryndamere-chemtech.png, riven-dawnbringer.png, yasuo-nightbringer.png, ekko-skt-t1.png, jhin-skt-t1.png, nami-skt-t1.png, olaf-skt-t1.png, syndra-skt-t1.png, zac-skt-t1.png, kayn-classic.png, kayn-soulhunter.png, fizz-omega-squad.png, tristana-omega-squad.png, twitch-omega-squad.png, veigar-omega-squad.png, brand-battle-boss.png, malzahar-battle-boss.png, ziggs-battle-boss.png, hecarim-lancer-zero.png, ornn-classic.png, ornn-thunder-lord.png, sivir-neo-pax.png, ahri-star-guardian.png, ezreal-star-guardian.png, miss-fortune-star-guardian.png, soraka-star-guardian.png, syndra-star-guardian.png, ashe-championship.png, cassiopeia-eternum.png, fiora-soaring-sword.png, janna-sacred-sword.png, master-yi-eternal-sword.png, yorick-arclight.png, singed-beekeeper.png, annie-super-galaxy.png, elise-super-galaxy.png, gnar-super-galaxy.png, nidalee-super-galaxy.png, katarina-deathsworn.png, viktor-deathsworn.png, zed-deathsworn.png, rengar-mecha.png, blitzcrank-lancer-rogue.png, blitzcrank-lancer-paragon.png, graves-victorious.png, zoe-cyber-pop.png, jhin-project.png, vayne-project.png, vi-project.png, kog-maw-hextech.png, jinx-ambitious-elf.png, draven-santa.png, poppy-snow-fawn.png, jax-god-staff.png, gragas-arctic-ops.png, warwick-lunar-guardian.png, nasus-lunar-guardian.png, lux-lunar-empress.png, xayah-sweetheart.png, rakan-sweetheart.png, swain-dragon-master.png, jarvan-iv-dark-star.png, kaisa-classic.png, kaisa-bullet-angel.png, illaoi-resistance.png, miss-fortune-gun-goddess.png, alistar-hextech.png, sivir-pizza-delivery.png, galio-birdio.png, wukong-lancer-stratus.png, rumble-badlands-baron.png, varus-conqueror.png, teemo-beemo.png, evelynn-blood-moon.png, riven-pulsefire.png, shen-pulsefire.png, twisted-fate-pulsefire.png, diana-dark-waters.png, vladimir-dark-waters.png, pyke-classic.png, pyke-sand-wraith.png, lee-sin-playmaker.png, rammus-sweeper.png, darius-god-king.png, garen-god-king.png, chogath-dark-star.png, ezreal-ssg.png, gnar-ssg.png, jarvan-iv-ssg.png, rakan-ssg.png, taliyah-ssg.png, xayah-ssg.png, poppy-hextech.png, caitlyn-pool-party.png, gangplank-pool-party.png, zoe-pool-party.png, aurelion-sol-mecha.png, ashe-cosmic-queen.png, lulu-cosmic-enchantress.png, xin-zhao-cosmic-defender.png, braum-mafia.png, lucian-high-noon.png, thresh-high-noon.png, urgot-high-noon.png, irelia-divine-sword.png, talon-enduring-sword.png, jinx-odyssey.png, kayn-odyssey.png, malphite-odyssey.png, sona-odyssey.png, yasuo-odyssey.png, ziggs-odyssey.png, khazix-championship.png, heimerdinger-dragon-trainer.png, amumu-infernal.png, malzahar-hextech.png, janna-bewitching.png, kled-count-kledula.png, ekko-trick-or-treat.png, ahri-kda.png, akali-kda.png, kaisa-kda.png, evelynn-kda.png, kaisa-kda-prestige-edition.png, fiddlesticks-praetorian.png, graves-praetorian.png, nami-program.png, leblanc-program.png, soraka-pajama-guardian.png, miss-fortune-pajama-guardian.png, ezreal-pajama-guardian.png, lulu-pajama-guardian.png, lux-pajama-guardian.png, leona-solar-eclipse.png, leona-lunar-eclipse.png, camille-coven.png, lissandra-coven.png, neeko-classic.png, neeko-winter-wonder.png, twitch-ice-king.png, dr-mundo-frozen-prince.png, soraka-winter-wonder.png, master-yi-snow-man.png, akali-kda-prestige-edition.png, renekton-hextech.png, aatrox-blood-moon.png, pyke-blood-moon.png, sivir-blood-moon.png, sylas-classic.png, sylas-lunar-wraith.png, tahm-kench-coin-emperor.png, sejuani-firecracker.png, vayne-firecracker.png, vayne-firecracker-prestige-edition.png, fiora-heartpiercer.png, vi-heartbreaker.png, anivia-papercraft.png, ahri-kda-prestige-edition.png, brand-arclight.png, corki-corgi.png, fizz-fuzz.png, fizz-fuzz-prestige-edition.png, yorick-meowrick.png, rengar-pretty-kitty.png, zed-galaxy-slayer.png, evelynn-kda-prestige-edition.png, camille-invictus-gaming.png, fiora-invictus-gaming.png, irelia-invictus-gaming.png, kaisa-invictus-gaming.png, leblanc-invictus-gaming.png, rakan-invictus-gaming.png, alistar-conqueror.png, yuumi-classic.png, yuumi-battle-principal.png, ezreal-battle-academia.png, lux-battle-academia.png, lux-battle-academia-prestige-edition.png, jayce-battle-academia.png, katarina-battle-academia.png, graves-battle-professor.png, tristana-little-demon.png, shaco-dark-star.png, karma-dark-star.png, jhin-dark-cosmic.png, qiyana-classic.png, qiyana-battle-boss.png, yasuo-battle-boss.png, kaisa-arcade.png, caitlyn-arcade.png, caitlyn-arcade-prestige-edition.png, garen-demacia-vice.png, lucian-demacia-vice.png, pyke-project.png, irelia-project.png, jinx-project.png, akali-project.png, warwick-project.png, irelia-project-prestige-edition.png, udyr-dragon-oracle.png, rammus-hextech.png, ahri-elderwood.png, veigar-elderwood.png, nocturne-elderwood.png, varus-infernal.png, shen-infernal.png, galio-infernal.png, neeko-star-guardian.png, neeko-star-guardian-prestige-edition.png, xayah-star-guardian.png, rakan-star-guardian.png, zoe-star-guardian.png, amumu-hextech.png, morgana-majestic-empress.png, nami-splendid-staff.png, riven-valiant-sword.png, riven-valiant-sword-prestige-edition.png, ryze-championship.png, hecarim-high-noon.png, ashe-high-noon.png, darius-high-noon.png, blitzcrank-witchs-brew.png, miss-fortune-bewitching.png, miss-fortune-bewitching-prestige-edition.png, kassadin-count.png, annie-versary.png, senna-classic.png, senna-true-damage.png, akali-true-damage.png, ekko-true-damage.png, qiyana-true-damage.png, qiyana-true-damage-prestige-edition.png, yasuo-true-damage.png, aatrox-victorious.png, thresh-pulsefire.png, thresh-pulsefire-prestige-edition.png, aphelios-classic.png, aphelios-nightbringer.png, vladimir-nightbringer.png, soraka-nightbringer.png, lee-sin-nightbringer.png, lee-sin-nightbringer-prestige-edition.png, soraka-dawnbringer.png, nidalee-dawnbringer.png, karma-dawnbringer.png, swain-hextech.png, braum-sugar-rush.png, ziggs-sugar-rush.png, evelynn-sugar-rush.png, zilean-sugar-rush.png, sylas-freljord.png, sett-classic.png, sett-mecha-kingdoms.png, leona-mecha-kingdoms.png, garen-mecha-kingdoms.png, garen-mecha-kingdoms-prestige-edition.png, draven-mecha-kingdoms.png, jax-mecha-kingdoms.png, rengar-guardian-of-the-sands.png, janna-guardian-of-the-sands.png, ryze-guardian-of-the-sands.png, trundle-dragonslayer.png, diana-dragonslayer.png, olaf-dragonslayer.png, jinx-heartseeker.png, yuumi-heartseeker.png, senna-true-damage-prestige-edition.png, katarina-blood-moon.png, master-yi-blood-moon.png, tryndamere-blood-moon.png, reksai-blackfrost.png, alistar-blackfrost.png, renekton-blackfrost.png, sejuani-hextech.png, talon-blackwood.png, taric-luminshield.png, twitch-shadowfoot.png, lux-cosmic.png, lux-dark-cosmic.png, malphite-dark-star.png, malphite-dark-star-prestige-edition.png, xerath-dark-star.png, mordekaiser-dark-star.png, tristana-pengu-cosplay.png, veigar-furyhorn-cosplay.png, urgot-pajama-guardian-cosplay.png, malzahar-worldbreaker.png, maokai-worldbreaker.png, sion-worldbreaker.png, morgana-coven.png, zyra-coven.png, zyra-coven-prestige-edition.png, leblanc-coven.png, gangplank-fpx.png, lee-sin-fpx.png, malphite-fpx.png, thresh-fpx.png, vayne-fpx.png, fiora-pulsefire.png, ekko-pulsefire.png, lucian-pulsefire.png, lucian-pulsefire-prestige-edition.png, pantheon-pulsefire.png, volibear-the-thousand-pierced-bear.png, poppy-astronaut.png, gnar-astronaut.png, bard-astronaut.png, senna-high-noon.png, irelia-high-noon.png, nocturne-hextech.png".split(", ")
+	lista = "Aatrox,Ahri,Akali,Alistar,Amumu,Anivia,Annie,Aphelios,Ashe,Aurelion Sol,Azir,Bardo,Blitzcrank,Brand,Braum,Caitlyn,Camille,Cassiopeia,Cho'Gath,Corki,Darius,Diana,Dr. Mundo,Draven,Ekko,Elise,Evelynn,Ezreal,Fiddlesticks,Fiora,Fizz,Galio,Gangplank,Garen,Gnar,Gragas,Graves,Hecarim,Heimerdinger,Illaoi,Irelia,Ivern,Janna,Jarvan IV,Jax,Jayce,Jhin,Jinx,Kai'Sa,Kalista,Karma,Karthus,Kassadin,Katarina,Kayle,Kayn,Kennen,Kha'Zix,Kindred,Kled,Kog'Maw,LeBlanc,Lee Sin,Leona,Lissandra,Lucian,Lulu,Lux,Malphite,Malzahar,Maokai,Master Yi,Miss Fortune,Mordekaiser,Morgana,Nami,Nasus,Nautilus,Neeko,Nidalee,Nocturne,Nunu e Willump,Olaf,Orianna,Ornn,Pantheon,Poppy,Pyke,Qiyana,Quinn,Rakan,Rammus,Rek'Sai,Renekton,Rengar,Riven,Rumble,Ryze,Sejuani,Senna,Sett,Shaco,Shen,Shyvana,Singed,Sion,Sivir,Skarner,Sona,Soraka,Swain,Sylas,Syndra,Tahm Kench,Taliyah,Talon,Taric,Teemo,Thresh,Tristana,Trundle,Tryndamere,Twisted Fate,Twitch,Udyr,Urgot,Varus,Vayne,Veigar,Vel'Koz,Vi,Viktor,Vladimir,Volibear,Warwick,Wukong,Xayah,Xerath,Xin Zhao,Yasuo,Yorick,Yuumi,Zac,Zed,Ziggs,Zilean,Zoe,Zyra".split(",")
 
-for(i=0;i<500;i++){
-	//https://www.mobafire.com/images/avatars/dr-mundo-toxic-dr.png
-
-	ok.innerHTML += "<img nome="+nomes[i]+" src='https://www.mobafire.com/images/avatars/"+nomes[i]+"'>"
-
-}
-
-</script>
-<!-- 
-<script src="sistema_de_busca.js"></script>
- -->
-
-<script>
-	pesquisa_input = document.querySelectorAll(".pesquisa");
-
-	for(i in pesquisa_input){
+	function acessar(personagem){
 		
-			pesquisa_input[i].onkeyup=function(e){
+		link = "https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/pt-br/production/pt-br/page-data/champions/"+personagem+"/page-data.json"
 
-				reg = new RegExp(this.value.toLowerCase(),"g")
-				lis = this.parentElement.querySelector(".lista")
+		fetch(link)
+		.then(e=>{
+			e.text().then(e=>{
+				k = JSON.parse(e)
 
-				console.log(lis)
+				q = k.result.pageContext.data.sections[0].props.abilities.Q.iconUrl
+				w = k.result.pageContext.data.sections[0].props.abilities.W.iconUrl
+				e = k.result.pageContext.data.sections[0].props.abilities.E.iconUrl
+				r = k.result.pageContext.data.sections[0].props.abilities.R.iconUrl
 
-				for(j of lis.children){
-					if( !j.getAttribute("nome").match(reg) )
-						j.style.opacity=0.2
-					else
-						j.style.opacity=1
-				}
-			}
+				vq = k.result.pageContext.data.sections[0].props.abilities.Q.videoData.sources[1].url
+				vw = k.result.pageContext.data.sections[0].props.abilities.W.videoData.sources[1].url
+				ve = k.result.pageContext.data.sections[0].props.abilities.E.videoData.sources[1].url
+				vr = k.result.pageContext.data.sections[0].props.abilities.R.videoData.sources[1].url
+
+				
+
+				ar = [q,w,e,r]
+				av = [vq,vw,ve,vr]
+
+				console.log(personagem)
+				ok.innerHTML = ar.map(e=>"<img src='"+e+"'>").join("")
+				ok.innerHTML += "<br>"
+				ok.innerHTML += av.map(e=>"<div class='vd'><video muted loop src='"+e+"'></video></div>").join("")
+				
+
+
+
+			})
+		})
 	}
+
+	// acessar('jax')
+
+	inp.onkeyup=function(e){
+		if(e.key == "Enter")
+			acessar(this.value)
+	}
+
+	window.onmouseover=function(e){
+		if(e.target.tagName=="VIDEO"){
+			vid = e.target
+			vid.muted=false
+			e.target.play()
+		}
+	}
+
+	window.onmouseout=function(e){
+		if(e.target.tagName=="VIDEO"){
+			vid = e.target
+			vid.muted=true
+			vid.pause()
+		}
+	}
+
+
+	// for(i=0;i<10;i++){
+	// 	nome = lista[i].toString().toLowerCase()
+	// 	acessar(nome)
+	// }
+
+
+	valor = 0
+	passa.onclick=function(){
+		nome = lista[valor].toLowerCase()
+		this.innerHTML = nome
+		acessar(nome)
+		console.log(nome)
+		valor++
+	}
+
 </script>
