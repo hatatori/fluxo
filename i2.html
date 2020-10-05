@@ -1,13 +1,12 @@
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="tree.css">
+<link rel="stylesheet" type="text/css" href="md.css">
 
-<link rel="stylesheet" type="text/css" href="style2.css">
-
-
-
-<!-- <link href="https://unpkg.com/treeflex/dist/css/treeflex.css" rel="stylesheet"> -->
+<div class='tree' id="cont" ><a href='https://belt.al.ce.gov.br/index.php/legislacao-do-ceara/organizacao-tematica/trabalho-administracao-e-servico-publico/item/6268-lei-n-13-407-de-21-11-03-d-o-de-02-12-03' target="_blank">Código disciplinar</a>
 
 
-<div class='invisible' id="cont" ><a href='https://belt.al.ce.gov.br/index.php/legislacao-do-ceara/organizacao-tematica/trabalho-administracao-e-servico-publico/item/6268-lei-n-13-407-de-21-11-03-d-o-de-02-12-03' target="_blank">Código disciplinar</a>
+a
+	b
+	c
 
 
 Código
@@ -16,8 +15,11 @@ Código
 		Reserva
 	Não Sujeitos
 		Cargos públicos não militares ou Eletivos
-		Magistrados
+		Magistrados JM
 		Reformados
+			Incapacidade definitiva
+			Idade (65)
+			Adm. Disciplinar
 
 
 Grau hierárquico
@@ -175,6 +177,26 @@ Proibição do Uso de Uniformes e de Porte de Arma
 			Que atentar contra o decoro ou a dignidade	
 	Limite
 		1 ano
+
+
+Disciplina Militar
+	Exato cumprimento dos deveres
+		Observância e acatamento
+			Leis
+			Regulamentos
+			Normas
+			Ordens
+	Manifestações
+		[[observância rigorosa#a observância rigorosa das prescrições legais e regulamentares]]
+		[[obediência às ordens#a obediência às ordens legais dos superiores]]
+		[[emprego de todas as energias#o emprego de todas as energias em benefício do serviço]]
+		correção de atitudes
+		[[manifestações espontâneas de acatamento#as manifestações espontâneas de acatamento dos valores e deveres éticos]]
+	[[camaradagem#A camaradagem é indispensável à formação e ao convívio do militar, incumbindo aos comandantes incentivar e manter a harmonia e a solidariedade entre os seus comandados, promovendo estímulos de aproximação e cordialidade.]]
+	[[civilidade#A civilidade é parte integrante da educação policial-militar, cabendo a superiores e subordinados atitudes de respeito e deferência mútuos.]]
+	[[ordens legais #As ordens legais devem ser prontamente acatadas e executadas, cabendo inteira responsabilidade à autoridade que as determinar.]]
+		[[se obscura#Quando a ordem parecer obscura, o subordinado, ao recebê-la, poderá solicitar que os esclarecimentos necessários sejam oferecidos de maneira formal.]]
+		[[se exorbitar da ordem#Cabe ao executante que exorbitar no cumprimento da ordem recebida à responsabilidade pelo abuso ou excesso que cometer, salvo se o fato é cometido sob coação irresistível ou sob estreita obediência à ordem, não manifestamente ilegal, de superior hierárquico, quando só será punível o autor da coação ou da ordem.]]
 
 
 Recolhimento Transitório
@@ -468,7 +490,7 @@ Recompensas Militares
 					Militar da ativa
 			Inaplicáveis
 				Reforma
-				Demissão
+				demissão
 				Expulsão
 
 
@@ -743,10 +765,11 @@ Remédios constitucionais
 
 
 
-<div id="cont2"></div>
 
-<br><br>
-<div class="tf-tree example" id="ok"></div>
 
-<script src='js.js'></script>
-<script src="alertar.js"></script>
+
+<script src='tree.js'></script>
+<script src="md.js"></script>
+<script>
+	document.body.innerHTML = document.body.innerHTML.replace(/;/g,"<br>")
+</script>
