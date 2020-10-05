@@ -62,6 +62,8 @@ function render2(){
 			div.appendChild(e)
 		})
 	}
+
+	document.body.innerHTML = document.body.innerHTML.replace(/\[\[(.*?)#(.*?)\]\]/g,"<span class='blue' onclick=\"alertar('$2')\">$1</span>")
 }
 
 render2()

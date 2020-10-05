@@ -1,10 +1,11 @@
+.blue{color: blue;cursor: pointer;}
 .monospace{font-family: monospace;}
 .tf-tree{font-size:16px;overflow:auto}
 .tf-tree *{box-sizing:border-box;margin:0;padding:0}
-.tf-tree > ul{padding: 10}
-.tf-tree ul{display:inline-flex;width: 100%;}
-.tf-tree li{align-items:center;display:flex;flex-direction:column;flex-wrap:wrap;padding:0 1em;position:relative}
-.tf-tree li ul{margin:2em 0;}
+.tf-tree ul{display:inline-flex}
+.tf-tree > ul{width: 100%;text-align: center; padding: 10;overflow-x: auto;}
+.tf-tree li{align-items:center;display:flex;flex-direction:column;flex-wrap:wrap;padding:0 1em;position:relative;}
+.tf-tree li ul{margin:2em 0}
 .tf-tree li li:before{border-top:.0625em solid #000;content:"";display:block;height:.0625em;left:-.03125em;position:absolute;top:-1.03125em;width:100%}
 .tf-tree li li:first-child:before{left:calc(50% - .03125em);max-width:calc(50% + .0625em)}
 .tf-tree li li:last-child:before{left:auto;max-width:calc(50% + .0625em);right:calc(50% - .03125em)}
