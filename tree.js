@@ -41,6 +41,7 @@ function render(str){
 			j.remove()
 	}
 
+
 	return  ul
 }
 
@@ -63,7 +64,7 @@ function render2(){
 		})
 	}
 
-	document.body.innerHTML = document.body.innerHTML.replace(/\[\[(.*?)#(.*?)\]\]/g,"<span class='blue' onclick=\"alertar('$2')\">$1</span>")
+	document.body.innerHTML = document.body.innerHTML.replace(/\[\[(.*?)#(.*?)\]\]/g,"<span class='blue' onclick=\"alertar('$2')\">$1</span>").replace(/;/g,"<br>")
 }
 
 render2()
