@@ -1,6 +1,15 @@
+<style>
+	#txtt{
+		width: 50%;
+		height: 200;
+		display: block;
+		margin: auto
+	}
+</style>
 <link rel="stylesheet" type="text/css" href="tree.css">
 
-<textarea style="width: 1000;height: 200" id='txt'>a
+
+<textarea id='txtt'>xa
 	b
 	c
 	d
@@ -29,3 +38,11 @@
 
 
 <script src="tree.js"></script>
+
+<script>
+	txtt.onkeyup=function(e){
+		rec.innerHTML = ""
+		rec.innerHTML = this.value
+		render2()
+	}
+</script>
