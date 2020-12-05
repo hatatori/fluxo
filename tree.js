@@ -46,7 +46,9 @@ function render(str){
 }
 
 function render2(){
+
 	Tree = document.querySelectorAll(".tree")
+	
 	for(j of Tree){
 
 		div = j
@@ -64,7 +66,7 @@ function render2(){
 		})
 	}
 
-	document.body.innerHTML = document.body.innerHTML.replace(/\[\[(.*?)#(.*?)\]\]/g,"<span class='blue' onclick=\"alertar('$2')\">$1</span>").replace(/;/g,"<br>")
+	// document.body.innerHTML = document.body.innerHTML.replace(/\[\[(.*?)#(.*?)\]\]/g,"<span class='blue' onclick=\"alertar('$2')\">$1</span>").replace(/;/g,"<br>")
 }
 
 render2()
