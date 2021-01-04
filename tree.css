@@ -3,7 +3,8 @@
 .tf-tree{font-size:17px;text-align: center;}
 .tf-tree *{box-sizing:border-box;margin:0;padding:0}
 .tf-tree ul{display:inline-flex}
-.tf-tree > ul{text-align: center; padding: 10vh 0;overflow-x: auto;}
+.tf-tree > ul{text-align: center; padding: 10vh 0;overflow-x: auto; width: 100%;}
+.tf-tree > ul > li{margin-right: auto;margin-left: auto;}
 .tf-tree li{align-items:center;display:flex;flex-direction:column;flex-wrap:wrap;padding:0 1em;position:relative;}
 .tf-tree li ul{margin:2em 0}
 .tf-tree li li:before{border-top:.0625em solid #000;content:"";display:block;height:.0625em;left:-.03125em;position:absolute;top:-1.03125em;width:100%}
